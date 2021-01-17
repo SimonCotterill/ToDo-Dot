@@ -1,5 +1,7 @@
 # todo_dot
 
+Currently in development.
+
 An application to track habits and set reminders. IGEN 230 Project.
 
 ## Getting Started
