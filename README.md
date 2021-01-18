@@ -2,7 +2,9 @@
 
 Currently in development.
 
-An application to track habits and set reminders. IGEN 230 Project.
+An application to track habits and set reminders. Will connect with external device. 
+
+IGEN 230 Project at UBC.
 
 ## Getting Started
 
