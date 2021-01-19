@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        // Try setting OpenSans as default, works!!
+        fontFamily: 'OpenSans',
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -99,6 +101,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
+              style: TextStyle(
+                //Testing if the different styles works, it works!!
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w800,
+              )
             ),
             Text(
               '$_counter',
