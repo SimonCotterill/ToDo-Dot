@@ -9,9 +9,9 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFdce9e8),
+        backgroundColor: todoLightGreen,
         appBar: AppBar(
-            backgroundColor: Color(0xFF6594a3),
+            backgroundColor: todoBlue,
             centerTitle: true,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +27,7 @@ class Dashboard extends StatelessWidget {
             leading: new IconButton(
               icon: Icon(
                 Icons.menu,
-                color: Color(0xFFdce9e8),
+                color: todoLightGrey,
                 size: 40,
               ),
               onPressed: () {
@@ -36,19 +36,9 @@ class Dashboard extends StatelessWidget {
             )),
         body: SafeArea(
             child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                "Click an icon to get started!",
-                style: TextStyle(
-                    color: Color(0xFF6594a3),
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold),
-                textAlign: TextAlign.start,
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
@@ -57,10 +47,10 @@ class Dashboard extends StatelessWidget {
                   runSpacing: 20.0,
                   children: <Widget>[
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -71,7 +61,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.access_alarm,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -80,7 +70,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Alarms",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
@@ -93,10 +83,10 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -107,7 +97,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.timer_rounded,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -116,7 +106,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Pomodoro",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
@@ -129,10 +119,10 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -143,7 +133,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.today,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -152,7 +142,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Calendar",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
@@ -165,10 +155,10 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -179,7 +169,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.assignment_rounded,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -188,7 +178,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Tasks List",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
@@ -201,10 +191,10 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -215,7 +205,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.add_rounded,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -224,7 +214,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Connect",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
@@ -237,10 +227,10 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 150.0,
-                      height: 150.0,
+                      width: 160.0,
+                      height: 160.0,
                       child: Card(
-                        color: Color(0xFF6594a3),
+                        color: todoBlue,
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -251,7 +241,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.settings,
-                                color: Color(0xFFdce9e8),
+                                color: todoLightGreen,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -260,7 +250,7 @@ class Dashboard extends StatelessWidget {
                               Text(
                                 "Settings",
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),
