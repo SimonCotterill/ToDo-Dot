@@ -11,7 +11,7 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
         backgroundColor: todoLightGreen,
         appBar: AppBar(
-            backgroundColor: todoBlue,
+            backgroundColor: todoDarkGreen,
             centerTitle: true,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -20,8 +20,8 @@ class Dashboard extends StatelessWidget {
               children: [
                 //todo: COMMENT: Maybe text or image? both might be a little much
                 // Removed: Text('Home Page'),
-                Image.asset('assets/ToDo_Logo.png',
-                    fit: BoxFit.contain, height: 32),
+                Image.asset('assets/To_Do_Light.png',
+                    fit: BoxFit.contain, height: 45),
               ],
             ),
             leading: new IconButton(
@@ -34,6 +34,8 @@ class Dashboard extends StatelessWidget {
                 //do something
               },
             )),
+
+        //Buttons
         body: SafeArea(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,6 +48,7 @@ class Dashboard extends StatelessWidget {
                   spacing: 20,
                   runSpacing: 20.0,
                   children: <Widget>[
+                    //Track time
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -62,14 +65,14 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.access_alarm,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                "Alarms",
+                                "Track Time",
                                 style: TextStyle(
                                     color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
@@ -83,6 +86,8 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+
+                    //Pomodoro
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -99,7 +104,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.timer_rounded,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -120,6 +125,8 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+
+                    //Calendar
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -136,7 +143,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.today,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -157,6 +164,8 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+
+                    //To-Do List
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -173,14 +182,14 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.assignment_rounded,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                "Tasks List",
+                                "To-Do List",
                                 style: TextStyle(
                                     color: todoLightGrey,
                                     fontWeight: FontWeight.bold,
@@ -194,6 +203,8 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+
+                    //Connect
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -210,7 +221,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.add_rounded,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
@@ -231,6 +242,8 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+
+                    //Settings
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -247,7 +260,7 @@ class Dashboard extends StatelessWidget {
                             children: <Widget>[
                               Icon(
                                 Icons.settings,
-                                color: todoLightGreen,
+                                color: todoLightGrey,
                                 size: 80.0,
                               ),
                               SizedBox(
