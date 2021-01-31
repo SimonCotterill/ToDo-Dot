@@ -64,7 +64,7 @@ class Dashboard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Icon(
-                                Icons.access_alarm,
+                                Icons.hourglass_top_rounded,
                                 color: todoLightGrey,
                                 size: 80.0,
                               ),
