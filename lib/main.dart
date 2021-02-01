@@ -9,31 +9,47 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: todoLightGreen,
-        appBar: AppBar(
-            backgroundColor: todoDarkGreen,
-            centerTitle: true,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
-              children: [
-                //todo: COMMENT: Maybe text or image? both might be a little much
-                // Removed: Text('Home Page'),
-                Image.asset('assets/To_Do_Light.png',
-                    fit: BoxFit.contain, height: 45),
-              ],
-            ),
-            leading: new IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: todoLightGrey,
-                size: 40,
+        backgroundColor: todoLightGrey,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: AppBar(
+            //https://stackoverflow.com/questions/55826789/flutter-rounded-corners-in-sliverappbar
+              elevation: 25.0,
+              shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(5.0),
               ),
-              onPressed: () {
-                //do something
-              },
-            )),
+            ),
+              backgroundColor: todoDarkGreen,
+              centerTitle: true,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
+                children: [
+                  //todo: COMMENT: Maybe text or image? both might be a little much
+                  // Removed: Text('Home Page'),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                    child: Image.asset('assets/To_Do_Light.png',
+                        fit: BoxFit.contain, height: 50),
+                  ),
+                ],
+              ),
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(5,12,0,0),
+                child: new IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: todoLightGrey,
+                    size: 40,
+                  ),
+                  onPressed: () {
+                    //do something
+                  },
+                ),
+              )),
+        ),
 
         //Buttons
         body: SafeArea(
@@ -51,16 +67,16 @@ class Dashboard extends StatelessWidget {
                     //Track time
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -69,7 +85,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "Track Time",
@@ -90,16 +106,16 @@ class Dashboard extends StatelessWidget {
                     //Pomodoro
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -108,7 +124,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "Pomodoro",
@@ -129,16 +145,16 @@ class Dashboard extends StatelessWidget {
                     //Calendar
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -147,7 +163,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "Calendar",
@@ -168,16 +184,16 @@ class Dashboard extends StatelessWidget {
                     //To-Do List
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -186,7 +202,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "To-Do List",
@@ -207,16 +223,16 @@ class Dashboard extends StatelessWidget {
                     //Connect
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -225,7 +241,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "Connect",
@@ -246,16 +262,16 @@ class Dashboard extends StatelessWidget {
                     //Settings
                     SizedBox(
                       width: 160.0,
-                      height: 160.0,
+                      height: 180.0,
                       child: Card(
                         color: todoBlue,
-                        elevation: 2.0,
+                        elevation: 15.0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(35.0)),
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 8.0),
+                              vertical: 20.0, horizontal: 8.0),
                           child: Column(
                             children: <Widget>[
                               Icon(
@@ -264,7 +280,7 @@ class Dashboard extends StatelessWidget {
                                 size: 80.0,
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 20.0,
                               ),
                               Text(
                                 "Settings",
