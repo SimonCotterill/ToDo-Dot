@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
+import 'sidebar.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -14,7 +15,9 @@ class Dashboard extends StatelessWidget {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
             child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
-
+        drawer: Drawer(
+          child: SideBar(),
+        ),
         //Buttons
         body: SafeArea(
             child: Column(
@@ -57,6 +60,7 @@ class Dashboard extends StatelessWidget {
               ),
             )
           ],
-        )));
+        ))
+        );
   }
 }
