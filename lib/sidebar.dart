@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'style.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
+// https://doctorcodetutorial.blogspot.com/2020/09/make-flutter-navigation-drawer-in.html
+// Naviagtion: https://medium.com/@maffan/screen-navigation-in-flutter-apps-with-data-handling-67b09cc04a75
 
 class SideBar extends StatelessWidget {
 
