@@ -147,3 +147,34 @@ class SideButton extends StatelessWidget {
         ));
   }
 }
+
+//Settings List Buttons
+class ListButton extends StatelessWidget {
+  final IconData ListIcon;
+  final String ListText;
+  final StatelessWidget ListRoute;
+
+  const ListButton({this.ListIcon, this.ListText, this.ListRoute});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        onTap: () {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => ListRoute));
+        },
+        leading: Icon(
+          ListIcon,
+          color: todoBlue,
+          size: 40.0,
+        ),
+        title: Text(
+          ListText,
+          style: TextStyle(
+            color: todoBlue,
+            fontWeight: FontWeight.bold,
+            fontSize: 30.0,
+          ),
+        ));
+  }
+}
