@@ -32,6 +32,10 @@ class Settings extends StatelessWidget {
 
 class SetTimezone extends StatelessWidget {
   @override
+  // useful links to start working on this...
+  // https://pub.dev/packages/timezone
+  // https://medium.com/flutter-community/working-with-timezones-in-flutter-1c304089dcf9
+  // https://stackoverflow.com/questions/50780124/how-to-specify-a-timezone-when-creating-a-datetime-object-in-dart-flutter
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
