@@ -41,19 +41,22 @@ class ToDoAppBar extends StatelessWidget {
             ),
           ],
         ),
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
-          child: new IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: todoLightGrey,
-              size: 40,
-            ),
-            onPressed: () {
-              //do something
-            },
+
+      // https://stackoverflow.com/questions/59554348/how-can-i-change-drawer-icon-in-flutter
+        leading: Builder(builder: (BuildContext context) {
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: todoLightGrey,
+                size: 40,
+              ),
+              onPressed: () { Scaffold.of(context).openDrawer();}
           ),
-        ));
+        );
+    },),
+    );
   }
 }
 
@@ -104,6 +107,37 @@ class HomeButton extends StatelessWidget {
           ),
         )),
       ),
+    );
+  }
+}
+
+//SideBar Buttons
+class SideButton extends StatelessWidget {
+  final IconData SideIcon;
+  final String SideText;
+
+  const SideButton({
+    this.SideIcon,
+    this.SideText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () {},
+      leading: Icon(
+        SideIcon,
+        color: todoMediumGreen,
+        size: 40.0,
+      ),
+      title: Text(
+        SideText,
+        style: TextStyle(
+          color: todoMediumGreen,
+          fontWeight: FontWeight.bold,
+          fontSize: 30.0,
+        ),
+      )
     );
   }
 }
