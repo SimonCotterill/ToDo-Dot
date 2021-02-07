@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_dot/settings.dart';
 
 // project colors
 Color todoLightGrey = Color(0xFFe9e9f2);
@@ -19,43 +20,46 @@ class ToDoAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        //https://stackoverflow.com/questions/55826789/flutter-rounded-corners-in-sliverappbar
-        elevation: 25.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(5.0),
+      //https://stackoverflow.com/questions/55826789/flutter-rounded-corners-in-sliverappbar
+      elevation: 25.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(5.0),
+        ),
+      ),
+      backgroundColor: todoDarkGreen,
+      centerTitle: true,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
+        children: [
+          //todo: COMMENT: Maybe text or image? both might be a little much
+          // Removed: Text('Home Page'),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: Image.asset(LogoName, fit: BoxFit.contain, height: 50),
           ),
-        ),
-        backgroundColor: todoDarkGreen,
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
-          children: [
-            //todo: COMMENT: Maybe text or image? both might be a little much
-            // Removed: Text('Home Page'),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: Image.asset(LogoName, fit: BoxFit.contain, height: 50),
-            ),
-          ],
-        ),
+        ],
+      ),
 
       // https://stackoverflow.com/questions/59554348/how-can-i-change-drawer-icon-in-flutter
-        leading: Builder(builder: (BuildContext context) {
+      leading: Builder(
+        builder: (BuildContext context) {
           return Padding(
             padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
             child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: todoLightGrey,
-                size: 40,
-              ),
-              onPressed: () { Scaffold.of(context).openDrawer();}
-          ),
-        );
-    },),
+                icon: Icon(
+                  Icons.menu,
+                  color: todoLightGrey,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                }),
+          );
+        },
+      ),
     );
   }
 }
@@ -115,29 +119,31 @@ class HomeButton extends StatelessWidget {
 class SideButton extends StatelessWidget {
   final IconData SideIcon;
   final String SideText;
+  final StatelessWidget Route;
 
-  const SideButton({
-    this.SideIcon,
-    this.SideText,
-  });
+  const SideButton({this.SideIcon, this.SideText, this.Route});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
-      leading: Icon(
-        SideIcon,
-        color: todoMediumGreen,
-        size: 40.0,
-      ),
-      title: Text(
-        SideText,
-        style: TextStyle(
+        onTap: () {
+          //https://medium.com/@maffan/screen-navigation-in-flutter-apps-with-data-handling-67b09cc04a75
+          Navigator.pop(context);
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Route));
+        },
+        leading: Icon(
+          SideIcon,
           color: todoMediumGreen,
-          fontWeight: FontWeight.bold,
-          fontSize: 30.0,
+          size: 40.0,
         ),
-      )
-    );
+        title: Text(
+          SideText,
+          style: TextStyle(
+            color: todoMediumGreen,
+            fontWeight: FontWeight.bold,
+            fontSize: 30.0,
+          ),
+        ));
   }
 }
