@@ -14,17 +14,52 @@ class Settings extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          // use SideButton custom class???
-          ListTile(
-            leading: Icon(Icons.access_time),
-            title: Text('Timezone'),
+          ListButton(
+            ListIcon: Icons.access_time,
+            ListText: 'Timezone',
+            ListRoute: SetTimezone(),
           ),
-          ListTile(
-            leading: Icon(Icons.add_alarm),
-            title: Text('Manage Devices'),
+          ListButton(
+            ListIcon: Icons.add_alarm,
+            ListText: 'Manage Devices',
+            ListRoute: ManageDevices(),
           ),
         ],
       ),
     );
+  }
+}
+
+class SetTimezone extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(80.0),
+            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+        drawer: Drawer(
+          child: SideBar(),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(40.0),
+          child: Text('Timezone - In Progress'),
+        ));
+  }
+}
+
+class ManageDevices extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(80.0),
+            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+        drawer: Drawer(
+          child: SideBar(),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(40.0),
+          child: Text('Manage Devices - In Progress'),
+        ));
   }
 }
