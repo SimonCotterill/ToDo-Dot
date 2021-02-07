@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
+import 'sidebar.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -8,8 +9,12 @@ class Settings extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
           child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+      drawer: Drawer(
+        child: SideBar(),
+      ),
       body: ListView(
         children: <Widget>[
+          // use SideButton custom class???
           ListTile(
             leading: Icon(Icons.access_time),
             title: Text('Timezone'),
