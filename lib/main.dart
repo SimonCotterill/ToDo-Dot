@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'style.dart';
 import 'sidebar.dart';
 
-
 void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Dashboard(),
     ));
 
@@ -34,33 +34,44 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       ButtonIcon: Icons.hourglass_top_rounded,
                       TextIcon: "Track Time",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       ButtonIcon: Icons.timer_rounded,
                       TextIcon: "Pomodoro",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       ButtonIcon: Icons.today,
                       TextIcon: "Calendar",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       ButtonIcon: Icons.assignment_rounded,
                       TextIcon: "To-Do List",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       ButtonIcon: Icons.add_rounded,
                       TextIcon: "Connect",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       ButtonIcon: Icons.settings,
                       TextIcon: "Settings",
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                   ],
                 ),
               ),
             )
           ],
-        ))
-        );
+        )));
   }
 }
