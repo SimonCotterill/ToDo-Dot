@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_dot/settings.dart';
 
 // project colors
 Color todoLightGrey = Color(0xFFe9e9f2);
