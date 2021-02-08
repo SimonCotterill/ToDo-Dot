@@ -26,26 +26,31 @@ class SideBar extends StatelessWidget {
             SideIcon: Icons.assignment_rounded,
             SideText: "To-Do List",
             Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
           SideButton(
             SideIcon: Icons.today,
             SideText: "Calendar",
             Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
           SideButton(
             SideIcon: Icons.timer_rounded,
             SideText: "Pomodoro",
             Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
           SideButton(
             SideIcon: Icons.hourglass_top_rounded,
             SideText: "Track Time",
             Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
           SideButton(
             SideIcon: Icons.add_rounded,
             SideText: "Connect",
             Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
           SideButton(
             SideIcon: Icons.settings,
