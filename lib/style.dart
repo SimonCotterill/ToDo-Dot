@@ -82,6 +82,8 @@ class HomeButton extends StatelessWidget {
             elevation: 15.0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(35.0)),
+            //https://flutter.dev/docs/cookbook/gestures/ripples
+            //https://stackoverflow.com/questions/44317188/flutter-ontap-method-for-containers
             child: InkWell(
               child: Padding(
                 padding:
