@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 import 'sidebar.dart';
-import 'settings.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -65,7 +64,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       ButtonIcon: Icons.settings,
                       TextIcon: "Settings",
-                      Route: Settings(),
+                      Route: Dashboard(),
+                      //TODO: Create page for this and remove default
                     ),
                   ],
                 ),

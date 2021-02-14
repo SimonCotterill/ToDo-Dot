@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_dot/main.dart';
-import 'package:todo_dot/settings.dart';
 import 'style.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
@@ -55,7 +54,8 @@ class SideBar extends StatelessWidget {
           SideButton(
             SideIcon: Icons.settings,
             SideText: "Settings",
-            Route: Settings(),
+            Route: Dashboard(),
+            //TODO: Create page for this and remove default
           ),
         ],
       ),
