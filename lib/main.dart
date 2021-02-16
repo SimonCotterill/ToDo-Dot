@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'style.dart';
 import 'sidebar.dart';
 
-void main() => runApp(MaterialApp(
+void main() => runApp( MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Dashboard(),
     ));
