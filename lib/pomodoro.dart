@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import 'sidebar.dart';
+import 'style.dart';
+
 
 // https://github.com/tensor-programming/flutter_timer_example/blob/master/lib/main.dart
+// https://www.youtube.com/watch?v=tRe8teyf9Nk&ab_channel=TensorProgramming
 
-//Todo: Delete this section:
-void main() => runApp(MaterialApp(
-  home: MyApp(),
-  theme: ThemeData(
-    canvasColor: Colors.blueGrey,
-    iconTheme: IconThemeData(
-      color: Colors.white,
-    ),
-    accentColor: Colors.pinkAccent,
-    brightness: Brightness.dark,
-  ),
-));
-
-//Todo: change MyApp to pomodoro:
-class MyApp extends StatefulWidget {
+class Pomodoro extends StatefulWidget {
   @override
-  MyAppState createState() => MyAppState();
+  PomodoroState createState() => PomodoroState();
 }
 
-class MyAppState extends State<MyApp> with TickerProviderStateMixin {
+class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
   AnimationController controller;
 
   // bool isPlaying = false;
@@ -53,6 +43,13 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
+      backgroundColor: todoLightGrey,
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+      drawer: Drawer(
+        child: SideBar(),
+      ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
@@ -73,6 +70,7 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
                                 painter: TimerPainter(
                                   animation: controller,
                                   backgroundColor: Colors.white,
+                                  // TODO: Change colour to dark green
                                   color: themeData.indicatorColor,
                                 ));
                           },
@@ -109,7 +107,11 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  // TODO: Add button for 25 min and 5 min
+
+                  // TODO: Make button higher
                   FloatingActionButton(
+                    // TODO: Change colour to dark green
                     child: AnimatedBuilder(
                       animation: controller,
                       builder: (BuildContext context, Widget child) {
@@ -163,9 +165,12 @@ class TimerPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
+    // Big circle
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = color;
+    // Convert progress into radians
     double progress = (1.0 - animation.value) * 2 * math.pi;
+    // Draw Arc
     canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
   }
 
