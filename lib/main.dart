@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+
+//TODO: DELETE THIS IMPORT AND DELETE FILE!!!
+import 'Stateful test.dart';
+
 import 'style.dart';
 import 'sidebar.dart';
 import 'settings.dart';
@@ -32,37 +36,42 @@ class Dashboard extends StatelessWidget {
                   spacing: 20,
                   runSpacing: 20.0,
                   children: <Widget>[
-                    HomeButton(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.hourglass_top_rounded,
                       TextIcon: "Track Time",
                       Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButton(
+
+
+                    //TODO: CHANGE BACK TO STLESS AND DASHBOARD
+                    HomeButtonStFul(
                       ButtonIcon: Icons.timer_rounded,
                       TextIcon: "Pomodoro",
-                      Route: Dashboard(),
+                      Route: MyApp(),
+
+
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButton(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.today,
                       TextIcon: "Calendar",
                       Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButton(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.assignment_rounded,
                       TextIcon: "To-Do List",
                       Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButton(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.add_rounded,
                       TextIcon: "Connect",
                       Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButton(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.settings,
                       TextIcon: "Settings",
                       Route: Settings(),

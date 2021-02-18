@@ -64,12 +64,13 @@ class ToDoAppBar extends StatelessWidget {
 }
 
 // Button widget https://www.youtube.com/watch?v=h6OmR0TpWJU&ab_channel=LuisTheTechGuy%21
-class HomeButton extends StatelessWidget {
+// Stateless home button
+class HomeButtonStLess extends StatelessWidget {
   final IconData ButtonIcon;
   final String TextIcon;
   final StatelessWidget Route;
 
-  const HomeButton({this.ButtonIcon, this.TextIcon, this.Route});
+  const HomeButtonStLess({this.ButtonIcon, this.TextIcon, this.Route});
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +88,59 @@ class HomeButton extends StatelessWidget {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
+                child: Column(children: <Widget>[
+                  Icon(
+                    ButtonIcon,
+                    color: todoLightGrey,
+                    size: 80.0,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    TextIcon,
+                    style: TextStyle(
+                        color: todoLightGrey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                ]),
+              ),
+              onTap: () => {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Route))
+              },
+            )));
+  }
+}
+
+// Stateful home buttons
+class HomeButtonStFul extends StatelessWidget {
+  final IconData ButtonIcon;
+  final String TextIcon;
+  final StatefulWidget Route;
+
+  const HomeButtonStFul({this.ButtonIcon, this.TextIcon, this.Route});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 160.0,
+        height: 180.0,
+        child: Card(
+            color: todoBlue,
+            elevation: 15.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(35.0)),
+            //https://flutter.dev/docs/cookbook/gestures/ripples
+            //https://stackoverflow.com/questions/44317188/flutter-ontap-method-for-containers
+            child: InkWell(
+              child: Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
                 child: Column(children: <Widget>[
                   Icon(
                     ButtonIcon,
