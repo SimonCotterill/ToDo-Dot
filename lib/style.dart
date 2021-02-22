@@ -11,10 +11,9 @@ Color todoLightGreen = Color(0xFFdce9e8);
 // Main App Bar for App
 class ToDoAppBar extends StatelessWidget {
   final String LogoName;
+  bool isSubPage;
 
-  const ToDoAppBar({
-    this.LogoName,
-  });
+  ToDoAppBar({this.LogoName, this.isSubPage = false});
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +32,28 @@ class ToDoAppBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
         children: [
-          //todo: COMMENT: Maybe text or image? both might be a little much
-          // Removed: Text('Home Page'),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Image.asset(LogoName, fit: BoxFit.contain, height: 50),
           ),
         ],
       ),
+
+      actions: <Widget>[
+        isSubPage
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(0, 12, 5, 0),
+                child: new IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: todoLightGrey,
+                    size: 40,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(null),
+                ),
+              )
+            : Container(),
+      ],
 
       // https://stackoverflow.com/questions/59554348/how-can-i-change-drawer-icon-in-flutter
       leading: Builder(
@@ -161,7 +174,7 @@ class ListButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         onTap: () {
-          Navigator.pushReplacement(
+          Navigator.push(
               context, MaterialPageRoute(builder: (context) => ListRoute));
         },
         leading: Icon(
