@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-
-//TODO: DELETE THIS IMPORT AND DELETE FILE!!!
-import 'Stateful test.dart';
-
 import 'style.dart';
 import 'sidebar.dart';
 import 'settings.dart';
@@ -42,15 +38,10 @@ class Dashboard extends StatelessWidget {
                       Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
-
-
-                    //TODO: CHANGE BACK TO STLESS AND DASHBOARD
-                    HomeButtonStFul(
+                    HomeButtonStLess(
                       ButtonIcon: Icons.timer_rounded,
                       TextIcon: "Pomodoro",
-                      Route: MyApp(),
-
-
+                      Route: Dashboard(),
                       //TODO: Create page for this and remove default
                     ),
                     HomeButtonStLess(
