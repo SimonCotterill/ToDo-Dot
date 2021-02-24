@@ -45,7 +45,7 @@ class ToDoAppBar extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 12, 5, 0),
                 child: new IconButton(
                   icon: Icon(
-                    Icons.arrow_back,
+                    Icons.close,
                     color: todoLightGrey,
                     size: 40,
                   ),
