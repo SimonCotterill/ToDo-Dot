@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'style.dart';
 import 'sidebar.dart';
+import 'dates_list.dart';
 
 // https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/lib/screens/calendar_page.dart
 
@@ -33,7 +34,7 @@ class CalendarPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(
             20,
-            20,
+            5,
             20,
             0,
           ),
@@ -82,7 +83,7 @@ class CalendarPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Productive Day, Sourav',
+                    'Productive Day',
                     style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.grey,
@@ -95,7 +96,8 @@ class CalendarPage extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'April, 2020',
+                  //TODO: Changes to different months
+                  '$formattedMonth, $formattedYear, $formattedDay',
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                 ),
               ),
@@ -106,12 +108,14 @@ class CalendarPage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: days.length,
                   itemBuilder: (BuildContext context, int index) {
+                    //TODO: Make dates pressable and go to date
+                    //TODO: Synchronize dates with months
                     return CalendarDates(
                       day: days[index],
                       date: dates[index],
-                      dayColor: index == 0 ? todoLightGreen : Colors.black54,
+                      dayColor: index == 0 ? Colors.black54 : Colors.black54,
                       dateColor:
-                      index == 0 ? todoLightGreen : todoLightGreen,
+                      index == 0 ? Colors.black54 : Colors.black54,
                     );
                   },
                 ),
@@ -137,7 +141,7 @@ class CalendarPage extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      '${time[index]} ${time[index] > 8 ? 'PM' : 'AM'}',
+                                      '${time[index]}',
                                       style: TextStyle(
                                         fontSize: 16.0,
                                         color: Colors.black54,
@@ -161,7 +165,7 @@ class CalendarPage extends StatelessWidget {
                                 title: 'Project Research',
                                 subtitle:
                                 'Discuss with the colleagues about the future plan',
-                                boxColor: LightColors.kLightYellow2,
+                                boxColor: todoLightGreen,
                               ),
                               _dashedText(),
                               TaskContainer(

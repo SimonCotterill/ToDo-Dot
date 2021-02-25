@@ -187,6 +187,7 @@ class TaskContainer extends StatelessWidget {
   final String subtitle;
   final Color boxColor;
 
+
   TaskContainer({
     this.title, this.subtitle, this.boxColor,
   });
@@ -197,29 +198,37 @@ class TaskContainer extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 15.0),
       padding: EdgeInsets.all(20.0),
 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Text(
-              subtitle,
+      child: InkWell(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
               style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black54,
-                fontWeight: FontWeight.w400,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
               ),
             ),
-          )
-        ],
+
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            )
+          ],
+        ),
+        //TODO: on tap goes to the task
+        /* onTap: () => {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => ))
+        },  */
+
       ),
       decoration: BoxDecoration(
           color: boxColor,
