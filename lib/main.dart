@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'style.dart';
 import 'sidebar.dart';
 import 'settings.dart';
+import 'calendar.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -47,7 +48,7 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       ButtonIcon: Icons.today,
                       TextIcon: "Calendar",
-                      Route: Dashboard(),
+                      Route: CalendarPage(),
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
