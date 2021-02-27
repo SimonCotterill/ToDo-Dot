@@ -97,7 +97,7 @@ class CalendarPage extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   //TODO: Changes to different months
-                  '$formattedMonth, $formattedYear, $formattedDay',
+                  '$formattedMonth $formattedDay, $formattedYear',
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                 ),
               ),

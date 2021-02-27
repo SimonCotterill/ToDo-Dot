@@ -18,7 +18,7 @@ List<String> days = [
 ];
 List<String> dates = [
   '$formattedDay',
-  ' ',
+  '6',
   '7',
   '8',
   '9',
