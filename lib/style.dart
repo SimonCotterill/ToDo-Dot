@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 // project colors
-Color todoLightGrey = Color(0xFFe9e9f2);
-Color todoDarkGrey = Color(0xFFd3d1dd);
-Color todoBlue = Color(0xFF6594a3);
-Color todoDarkGreen = Color(0xFF214e4c);
-Color todoMediumGreen = Color(0xFF589590);
-Color todoLightGreen = Color(0xFFdce9e8);
+const Color todoLightGrey = Color(0xFFe9e9f2);
+const Color todoDarkGrey = Color(0xFFd3d1dd);
+const Color todoBlue = Color(0xFF6594a3);
+const Color todoDarkGreen = Color(0xFF214e4c);
+const Color todoMediumGreen = Color(0xFF589590);
+const Color todoLightGreen = Color(0xFFdce9e8);
 
 // Main App Bar for App
 class ToDoAppBar extends StatelessWidget {
-  final String LogoName;
+  final String headerImage;
 
   const ToDoAppBar({
-    this.LogoName,
+    this.headerImage,
   });
 
   @override
@@ -37,7 +37,7 @@ class ToDoAppBar extends StatelessWidget {
           // Removed: Text('Home Page'),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-            child: Image.asset(LogoName, fit: BoxFit.contain, height: 50),
+            child: Image.asset(headerImage, fit: BoxFit.contain, height: 50),
           ),
         ],
       ),
@@ -65,11 +65,19 @@ class ToDoAppBar extends StatelessWidget {
 
 // Button widget https://www.youtube.com/watch?v=h6OmR0TpWJU&ab_channel=LuisTheTechGuy%21
 class HomeButton extends StatelessWidget {
-  final IconData ButtonIcon;
-  final String TextIcon;
-  final StatelessWidget Route;
+  final IconData icon;
+  final String text;
+  final StatefulWidget routestful;
+  final StatelessWidget routestless;
+  final bool isStLess;
 
-  const HomeButton({this.ButtonIcon, this.TextIcon, this.Route});
+  const HomeButton({
+    this.icon,
+    this.text,
+    this.routestful,
+    this.routestless,
+    this.isStLess,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +97,7 @@ class HomeButton extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 20.0, horizontal: 8.0),
                 child: Column(children: <Widget>[
                   Icon(
-                    ButtonIcon,
+                    icon,
                     color: todoLightGrey,
                     size: 80.0,
                   ),
@@ -97,7 +105,7 @@ class HomeButton extends StatelessWidget {
                     height: 20.0,
                   ),
                   Text(
-                    TextIcon,
+                    text,
                     style: TextStyle(
                         color: todoLightGrey,
                         fontWeight: FontWeight.bold,
@@ -109,8 +117,11 @@ class HomeButton extends StatelessWidget {
                 ]),
               ),
               onTap: () => {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Route))
+                isStLess
+                    ? Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => routestless))
+                    : Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => routestful))
               },
             )));
   }
@@ -118,11 +129,15 @@ class HomeButton extends StatelessWidget {
 
 //SideBar Buttons
 class SideButton extends StatelessWidget {
-  final IconData SideIcon;
-  final String SideText;
-  final StatelessWidget Route;
+  final IconData icon;
+  final String text;
+  final StatelessWidget route;
 
-  const SideButton({this.SideIcon, this.SideText, this.Route});
+  const SideButton({
+    this.icon,
+    this.text,
+    this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -131,15 +146,15 @@ class SideButton extends StatelessWidget {
           //https://medium.com/@maffan/screen-navigation-in-flutter-apps-with-data-handling-67b09cc04a75
           Navigator.pop(context);
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Route));
+              context, MaterialPageRoute(builder: (context) => route));
         },
         leading: Icon(
-          SideIcon,
+          icon,
           color: todoMediumGreen,
           size: 40.0,
         ),
         title: Text(
-          SideText,
+          text,
           style: TextStyle(
             color: todoMediumGreen,
             fontWeight: FontWeight.bold,
@@ -151,26 +166,30 @@ class SideButton extends StatelessWidget {
 
 //Settings List Buttons
 class ListButton extends StatelessWidget {
-  final IconData ListIcon;
-  final String ListText;
-  final StatelessWidget ListRoute;
+  final IconData icon;
+  final String text;
+  final StatelessWidget route;
 
-  const ListButton({this.ListIcon, this.ListText, this.ListRoute});
+  const ListButton({
+    this.icon,
+    this.text,
+    this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
         onTap: () {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => ListRoute));
+              context, MaterialPageRoute(builder: (context) => route));
         },
         leading: Icon(
-          ListIcon,
+          icon,
           color: todoBlue,
           size: 40.0,
         ),
         title: Text(
-          ListText,
+          text,
           style: TextStyle(
             color: todoBlue,
             fontWeight: FontWeight.bold,

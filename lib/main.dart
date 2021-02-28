@@ -16,7 +16,7 @@ class Dashboard extends StatelessWidget {
         backgroundColor: todoLightGrey,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
         drawer: Drawer(
           child: SideBar(),
         ),
@@ -34,38 +34,45 @@ class Dashboard extends StatelessWidget {
                   runSpacing: 20.0,
                   children: <Widget>[
                     HomeButton(
-                      ButtonIcon: Icons.hourglass_top_rounded,
-                      TextIcon: "Track Time",
-                      Route: Dashboard(),
+                      icon: Icons.assignment_rounded,
+                      text: "To-Do List",
+                      routestless: ToDoList(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
-                      ButtonIcon: Icons.timer_rounded,
-                      TextIcon: "Pomodoro",
-                      Route: Dashboard(),
+                      icon: Icons.timer_rounded,
+                      text: "Pomodoro",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
-                      ButtonIcon: Icons.today,
-                      TextIcon: "Calendar",
-                      Route: Dashboard(),
+                      icon: Icons.today,
+                      text: "Calendar",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
-                      ButtonIcon: Icons.assignment_rounded,
-                      TextIcon: "To-Do List",
-                      Route: ToDoList(),
-                    ),
-                    HomeButton(
-                      ButtonIcon: Icons.add_rounded,
-                      TextIcon: "Connect",
-                      Route: Dashboard(),
+                      icon: Icons.hourglass_top_rounded,
+                      text: "Track Time",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
-                      ButtonIcon: Icons.settings,
-                      TextIcon: "Settings",
-                      Route: Settings(),
+                      icon: Icons.add_rounded,
+                      text: "Connect",
+                      routestless: Dashboard(),
+                      isStLess: true,
+                      //TODO: Create page for this and remove default
+                    ),
+                    HomeButton(
+                      icon: Icons.settings,
+                      text: "Settings",
+                      routestless: Settings(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                   ],
