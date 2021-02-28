@@ -11,6 +11,7 @@ class SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: todoLightGrey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
           child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),

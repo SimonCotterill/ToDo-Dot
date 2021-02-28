@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
-import 'settings.dart';
 import 'sidebar.dart';
+import 'settings.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Dashboard(),
-      theme: ThemeData(
-        fontFamily: 'OpenSans'
-        )
-      )
-    );
+    ));
 
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: todoLightGrey,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
             child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
