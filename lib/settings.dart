@@ -62,7 +62,10 @@ class SetTimezone extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(
+              headerImage: 'assets/To_Do_Light.png',
+              isSubPage: true,
+            )),
         drawer: Drawer(
           child: SideBar(),
         ),
@@ -113,7 +116,10 @@ class ManageDevices extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(
+              headerImage: 'assets/To_Do_Light.png',
+              isSubPage: true,
+            )),
         drawer: Drawer(
           child: SideBar(),
         ),
