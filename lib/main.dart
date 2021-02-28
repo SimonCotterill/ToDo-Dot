@@ -13,7 +13,6 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: todoLightGrey,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
             child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
@@ -48,7 +47,7 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       ButtonIcon: Icons.today,
                       TextIcon: "Calendar",
-                      Route: CalendarPage(),
+                      Route: MyApp(),
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
