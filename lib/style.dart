@@ -34,7 +34,7 @@ class ToDoAppBar extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-            child: Image.asset(headerImage, fit: BoxFit.contain, height: 50),
+            child: Image.asset(LogoName, fit: BoxFit.contain, height: 50),
           ),
         ],
       ),
