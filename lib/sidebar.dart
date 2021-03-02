@@ -41,12 +41,6 @@ class SideBar extends StatelessWidget {
             //TODO: Create page for this and remove default
           ),
           SideButton(
-            icon: Icons.hourglass_top_rounded,
-            text: "Track Time",
-            route: Dashboard(),
-            //TODO: Create page for this and remove default
-          ),
-          SideButton(
             icon: Icons.add_rounded,
             text: "Connect",
             route: Dashboard(),
