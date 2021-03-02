@@ -9,11 +9,15 @@ const Color todoMediumGreen = Color(0xFF589590);
 const Color todoLightGreen = Color(0xFFdce9e8);
 
 // Main App Bar for App
+// value is only set once
+// ignore: must_be_immutable
 class ToDoAppBar extends StatelessWidget {
   final String headerImage;
+  bool isSubPage;
 
-  const ToDoAppBar({
+  ToDoAppBar({
     this.headerImage,
+    this.isSubPage = false,
   });
 
   @override
@@ -59,6 +63,22 @@ class ToDoAppBar extends StatelessWidget {
           );
         },
       ),
+
+      actions: <Widget>[
+        isSubPage
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(0, 12, 5, 0),
+                child: new IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: todoLightGrey,
+                    size: 40,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(null),
+                ),
+              )
+            : Container(),
+      ],
     );
   }
 }
@@ -180,7 +200,7 @@ class ListButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         onTap: () {
-          Navigator.pushReplacement(
+          Navigator.push(
               context, MaterialPageRoute(builder: (context) => route));
         },
         leading: Icon(
