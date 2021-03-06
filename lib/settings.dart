@@ -8,7 +8,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
-          child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+          child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
       drawer: Drawer(
         child: SideBar(),
       ),
@@ -18,17 +18,17 @@ class Settings extends StatelessWidget {
             height: 15,
           ),
           ListButton(
-            ListIcon: Icons.access_time,
-            ListText: 'Timezone',
-            ListRoute: SetTimezone(),
+            icon: Icons.access_time,
+            text: 'Timezone',
+            route: SetTimezone(),
           ),
           SizedBox(
             height: 20,
           ),
           ListButton(
-            ListIcon: Icons.add_alarm,
-            ListText: 'Manage Devices',
-            ListRoute: ManageDevices(),
+            icon: Icons.add_alarm,
+            text: 'Manage Devices',
+            route: ManageDevices(),
           ),
         ],
       ),
@@ -36,6 +36,8 @@ class Settings extends StatelessWidget {
   }
 }
 
+// value is only set once and not changed
+// ignore: must_be_immutable
 class SetTimezone extends StatelessWidget {
   String timezone = DateTime.now().timeZoneName;
 
@@ -44,11 +46,12 @@ class SetTimezone extends StatelessWidget {
   //get offset minutes not including the hours, by taking remainder
   //https://stackoverflow.com/questions/60854312/datetime-flutter-format
   String offsetMinutes = (DateTime.now().timeZoneOffset.inMinutes %
-          (DateTime.now().timeZoneOffset.inHours == 0
-              ? 60
-              : DateTime.now().timeZoneOffset.inHours * 60))
-      .toString()
-      .padLeft(2, '0');
+              (DateTime.now().timeZoneOffset.inHours == 0
+                  ? 60
+                  : DateTime.now().timeZoneOffset.inHours * 60))
+          .toString()
+          .padLeft(2, '0') +
+      " hours";
 
   @override
   // useful links to start working on this...
@@ -59,7 +62,10 @@ class SetTimezone extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(
+              headerImage: 'assets/To_Do_Light.png',
+              isSubPage: true,
+            )),
         drawer: Drawer(
           child: SideBar(),
         ),
@@ -69,22 +75,36 @@ class SetTimezone extends StatelessWidget {
               children: [
                 Row(children: <Widget>[
                   Text(
-                    'Timezone: ',
+                    'Timezone',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ]),
+                SizedBox(height: 20),
+                Row(children: <Widget>[
+                  Text(
+                    timezone,
                     style: TextStyle(fontSize: 25),
                   ),
-                  Text(timezone, style: TextStyle(fontSize: 25)),
                 ]),
+                SizedBox(height: 40),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      'Offset from UTC',
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 20),
                 Row(
                   children: <Widget>[
                     Text(
-                      'Offset from UTC: ',
+                      offsetHours + ':' + offsetMinutes,
                       style: TextStyle(fontSize: 25),
                     ),
-                    Text(offsetHours + ':' + offsetMinutes,
-                        style: TextStyle(fontSize: 25)),
                   ],
-                )
+                ),
               ],
             )));
   }
@@ -96,7 +116,10 @@ class ManageDevices extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(
+              headerImage: 'assets/To_Do_Light.png',
+              isSubPage: true,
+            )),
         drawer: Drawer(
           child: SideBar(),
         ),
