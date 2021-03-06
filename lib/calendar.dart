@@ -220,32 +220,20 @@ final Map<DateTime, List> _holidays = {
 };
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(MyApp()));
+  initializeDateFormatting().then((_) => runApp(Calendar()));
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Table Calendar Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Table Calendar Demo'),
-    );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Calendar extends StatefulWidget {
+  Calendar({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  CalendarState createState() => CalendarState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   Map<DateTime, List> _events;
   List _selectedEvents;
   AnimationController _animationController;
@@ -350,24 +338,85 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
-          child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+          child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
       drawer: Drawer(
         child: SideBar(),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          _buildButtons(),
-          const SizedBox(height: 8.0),
-          Expanded(child: _buildEventList()),
-        ],
-      ),
-    );
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            20,
+            5,
+            20,
+            0,
+          ),
+          child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                SizedBox(height: 30.0),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Today',
+                        style: TextStyle(
+                            fontSize: 30.0, fontWeight: FontWeight.w700),
+                      ),
+                      Container(
+                        height: 40.0,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: todoDarkGreen,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: FlatButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                //TODO: Create task page
+                                builder: (context) => Dashboard(),
+                              ),
+                            );
+                          },
+                          child: Center(
+                            child: Text(
+                              'Add task',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisSize: MainAxisSize.max ,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  children: <Widget> [
+                    Text(
+                    //TODO: Changes to different months
+                    '$formattedMonth $formattedDay, $formattedYear',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                    ),
+                    _buildButtons(),
+                  ],
+                ),
+                // Switch out 2 lines below to play with TableCalendar's settings
+                //-----------------------
+                SizedBox(height: 5.0),
+                _buildTableCalendar(),
+                // _buildTableCalendarWithBuilders(),
+                const SizedBox(height: 8.0),
+                Expanded(child: _buildEventList()),
+              ],
+            ),
+          ),
+
+      ));
   }
 
   // Simple TableCalendar configuration (using Styles)
@@ -529,46 +578,98 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       children: <Widget>[
         Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
+            Container(
+              height: 25,
+              width: 80,
+              decoration: BoxDecoration(
+                color: todoDarkGreen,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: FlatButton(
+                child: Text(
+                    'Month',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
+                onPressed: () {
+                  setState(() {
+                    _calendarController.setCalendarFormat(CalendarFormat.month);
+                  });
+                },
+              ),
             ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
+            SizedBox(width: 15),
+            /*Container(
+              height: 21.0,
+              width: 90,
+              decoration: BoxDecoration(
+                color: todoDarkGreen,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: FlatButton(
+                child: Text(
+                    '2 weeks',
+                    style: TextStyle(
+                      color: Colors.white,
+                      ),
+                  ),
+                onPressed: () {
+                  setState(() {
+                    _calendarController
+                        .setCalendarFormat(CalendarFormat.twoWeeks);
+                  });
+                },
+              ),
             ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
+            Container(
+              height: 21.0,
+              width: 70,
+              decoration: BoxDecoration(
+                color: todoDarkGreen,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: FlatButton(
+                child: Text(
+                    'Week',
+                    style: TextStyle(
+                    color: Colors.white,
+                    ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    _calendarController.setCalendarFormat(CalendarFormat.week);
+                  });
+                },
+              ),
+            ),*/
+            Container(
+              height: 25,
+              width: 75,
+              decoration: BoxDecoration(
+                color: todoDarkGreen,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: FlatButton(
+                child: Text(
+                  'Today',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  _calendarController.setSelectedDay(
+                    DateTime(dateTime.year, dateTime.month, dateTime.day),
+                    runCallback: true,
+                  );
+                },
+              ),
             ),
           ],
         ),
         const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
-        ),
+
       ],
     );
   }
@@ -582,7 +683,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           borderRadius: BorderRadius.circular(12.0),
         ),
         margin:
-        const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+        const EdgeInsets.symmetric(vertical: 4.0),
         child: ListTile(
           title: Text(event.toString()),
           onTap: () => print('$event tapped!'),

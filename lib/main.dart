@@ -49,8 +49,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.today,
                       text: "Calendar",
-                      routestless: Dashboard(),
-                      isStLess: true,
+                      routestful: Calendar(),
+                      isStLess: false,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
