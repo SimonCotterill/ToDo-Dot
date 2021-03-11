@@ -36,9 +36,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.assignment_rounded,
                       text: "To-Do List",
-                      routestless: ToDoList(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
+                      routestful: todo(),
+                      isStLess: false,
                     ),
                     HomeButton(
                       icon: Icons.timer_rounded,

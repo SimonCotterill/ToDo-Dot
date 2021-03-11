@@ -76,7 +76,7 @@ class HomeButton extends StatelessWidget {
     this.text,
     this.routestful,
     this.routestless,
-    this.isStLess,
+    @required this.isStLess,
   });
 
   @override
