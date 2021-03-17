@@ -427,16 +427,16 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: todoDarkGreen,
+        todayColor: todoMediumGreen,
+        markersColor: todoDarkGreen,
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
         TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
+          color: todoDarkGreen,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
@@ -463,11 +463,11 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
-        weekendStyle: TextStyle().copyWith(color: Colors.blue[800]),
-        holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
+        weekendStyle: TextStyle().copyWith(color: todoDarkGreen),
+        holidayStyle: TextStyle().copyWith(color: todoDarkGreen),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
+        weekendStyle: TextStyle().copyWith(color: todoDarkGreen),
       ),
       headerStyle: HeaderStyle(
         centerHeaderTitle: true,
@@ -480,7 +480,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
             child: Container(
               margin: const EdgeInsets.all(4.0),
               padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-              color: Colors.deepOrange[300],
+              color: todoDarkGreen,
               width: 100,
               height: 100,
               child: Text(
@@ -494,7 +494,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
           return Container(
             margin: const EdgeInsets.all(4.0),
             padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-            color: Colors.amber[400],
+            color: todoDarkGreen,
             width: 100,
             height: 100,
             child: Text(
@@ -580,7 +580,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Container(
+            /*Container(
               height: 25,
               width: 80,
               decoration: BoxDecoration(
@@ -601,7 +601,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               ),
             ),
             SizedBox(width: 15),
-            /*Container(
+            Container(
               height: 21.0,
               width: 90,
               decoration: BoxDecoration(
