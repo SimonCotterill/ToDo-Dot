@@ -7,6 +7,9 @@ import 'calendar.dart';
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Dashboard(),
+      theme: ThemeData(
+        fontFamily: 'OpenSans',
+      )
     ));
 
 class Dashboard extends StatelessWidget {
@@ -22,9 +25,9 @@ class Dashboard extends StatelessWidget {
         //Buttons
         body: SafeArea(
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 80),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
@@ -54,23 +57,9 @@ class Dashboard extends StatelessWidget {
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
-                      icon: Icons.hourglass_top_rounded,
-                      text: "Track Time",
-                      routestless: Dashboard(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
-                    ),
-                    HomeButton(
                       icon: Icons.add_rounded,
                       text: "Connect",
                       routestless: Dashboard(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
-                    ),
-                    HomeButton(
-                      icon: Icons.settings,
-                      text: "Settings",
-                      routestless: Settings(),
                       isStLess: true,
                       //TODO: Create page for this and remove default
                     ),

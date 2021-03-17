@@ -11,7 +11,6 @@ class SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: todoLightGrey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
           child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
@@ -38,12 +37,6 @@ class SideBar extends StatelessWidget {
           SideButton(
             icon: Icons.today,
             text: "Calendar",
-            route: Dashboard(),
-            //TODO: Create page for this and remove default
-          ),
-          SideButton(
-            icon: Icons.hourglass_top_rounded,
-            text: "Track Time",
             route: Dashboard(),
             //TODO: Create page for this and remove default
           ),
