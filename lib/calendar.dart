@@ -223,7 +223,6 @@ void main() {
   initializeDateFormatting().then((_) => runApp(Calendar()));
 }
 
-
 class Calendar extends StatefulWidget {
   Calendar({Key key, this.title}) : super(key: key);
 
@@ -332,7 +331,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
   }
-
+//Page layout
   @override
   Widget build(BuildContext context) {
     return Scaffold(
