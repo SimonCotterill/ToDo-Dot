@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 import 'sidebar.dart';
+import 'todo.dart';
+
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -36,8 +38,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.assignment_rounded,
                       text: "To-Do List",
-                      routestless: Dashboard(),
-                      isStLess: true,
+                      routestful: ToDo(),
+                      isStLess: false,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
