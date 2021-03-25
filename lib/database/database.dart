@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'task.dart';
+import 'package:todo_dot/model/task.dart';
 import 'utils.dart';
 
 class Database {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_dot/main.dart';
+import 'package:todo_dot/page/main.dart';
+import 'package:todo_dot/style.dart';
 import 'settings.dart';
-import 'style.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
 // https://doctorcodetutorial.blogspot.com/2020/09/make-flutter-navigation-drawer-in.html

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'style.dart';
+import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
 
 Future main() async {

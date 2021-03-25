@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'utils.dart';
+import 'package:todo_dot/database/utils.dart';
 
 // https://github.com/JohannesMilke/todo_app_firestore_example
 class Task {
