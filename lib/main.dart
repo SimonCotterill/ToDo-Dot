@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'style.dart';
 import 'sidebar.dart';
 
-void main() => runApp(MaterialApp(
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized;
+  await Firebase.initializeApp();
+
+  runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Dashboard(),
       theme: ThemeData(
         fontFamily: 'OpenSans',
-      )
-    ));
+      )));
+}
 
 class Dashboard extends StatelessWidget {
   @override
