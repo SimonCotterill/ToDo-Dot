@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_dot/page/main.dart';
+import 'package:todo_dot/page/dashboard.dart';
 import 'package:todo_dot/style.dart';
 import 'settings.dart';
 
