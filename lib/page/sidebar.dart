@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_dot/page/dashboard.dart';
+import 'package:todo_dot/page/pomodoro.dart';
 import 'package:todo_dot/style.dart';
 import 'settings.dart';
 
@@ -20,37 +21,41 @@ class SideBar extends StatelessWidget {
           SideButton(
             icon: Icons.home_rounded,
             text: "Home Page",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
           ),
           SideButton(
             icon: Icons.assignment_rounded,
             text: "To-Do List",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.timer_rounded,
             text: "Pomodoro",
-            route: Dashboard(),
-            //TODO: Create page for this and remove default
+            routestful: Pomodoro(),
+            isStLess: false,
           ),
           SideButton(
             icon: Icons.today,
             text: "Calendar",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.add_rounded,
             text: "Connect",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.settings,
             text: "Settings",
-            route: Settings(),
-            //TODO: Create page for this and remove default
+            routestless: Settings(),
+            isStLess: true,
           ),
         ],
       ),

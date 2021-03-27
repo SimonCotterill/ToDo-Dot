@@ -151,23 +151,28 @@ class HomeButton extends StatelessWidget {
 class SideButton extends StatelessWidget {
   final IconData icon;
   final String text;
-  final StatelessWidget route;
+  final StatefulWidget routestful;
+  final StatelessWidget routestless;
+  final bool isStLess;
 
   const SideButton({
     this.icon,
     this.text,
-    this.route,
+    this.routestful,
+    this.routestless,
+    this.isStLess,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        onTap: () {
-          //https://medium.com/@maffan/screen-navigation-in-flutter-apps-with-data-handling-67b09cc04a75
-          Navigator.pop(context);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => route));
-        },
+        onTap: () => {
+              isStLess
+                  ? Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestless))
+                  : Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestful))
+            },
         leading: Icon(
           icon,
           color: todoMediumGreen,
