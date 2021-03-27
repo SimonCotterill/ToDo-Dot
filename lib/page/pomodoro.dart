@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_dot/style.dart';
 import 'dart:math' as math;
 import 'sidebar.dart';
-import 'style.dart';
 
 // https://github.com/tensor-programming/flutter_timer_example/blob/master/lib/main.dart
 // https://www.youtube.com/watch?v=tRe8teyf9Nk&ab_channel=TensorProgramming
