@@ -1,14 +1,13 @@
-# todo_dot
+# To-Do Dots
 
-Currently in development.
+_Currently in development._
 
-An application to track habits and set reminders. Will connect with external device. 
+An application to track habits and set reminders. Will connect with an external device to get users off of phones. 
 
-IGEN 230 Project at UBC.
+IGEN 230 Project at UBC in 2020-2021 school year.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Resources:
 
 A few resources to get you started if this is your first Flutter project:
 
