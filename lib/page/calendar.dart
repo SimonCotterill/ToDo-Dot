@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
-import 'style.dart';
+import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
-import 'dates_list.dart';
+import 'package:todo_dot/dates_list.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -276,7 +275,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         'Event D8'
       ],
       _selectedDay.add(Duration(days: 3)):
-      Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
+          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
       _selectedDay.add(Duration(days: 7)): [
         'Event A10',
         'Event B10',
@@ -331,25 +330,26 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
   }
+
 //Page layout
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
-          child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
-      drawer: Drawer(
-        child: SideBar(),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-            20,
-            5,
-            20,
-            0,
-          ),
-          child: Column(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(80.0),
+            child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
+        drawer: Drawer(
+          child: SideBar(),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              20,
+              5,
+              20,
+              0,
+            ),
+            child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 SizedBox(height: 30.0),
@@ -370,13 +370,13 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                         ),
                         child: FlatButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                //TODO: Create task page
-                                builder: (context) => Dashboard(),
-                              ),
-                            );
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       //TODO: Create task page
+                            //       //builder: (context) => ,
+                            //     ),
+                            //   );
                           },
                           child: Center(
                             child: Text(
@@ -392,14 +392,15 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                     ]),
                 SizedBox(height: 20),
                 Row(
-                  mainAxisSize: MainAxisSize.max ,
+                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
-                  children: <Widget> [
+                  children: <Widget>[
                     Text(
-                    //TODO: Changes to different months
-                    '$formattedMonth $formattedDay, $formattedYear',
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                      //TODO: Changes to different months
+                      '$formattedMonth $formattedDay, $formattedYear',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                     ),
                     _buildButtons(),
                   ],
@@ -414,8 +415,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               ],
             ),
           ),
-
-      ));
+        ));
   }
 
   // Simple TableCalendar configuration (using Styles)
@@ -433,7 +433,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
-        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
           color: todoDarkGreen,
           borderRadius: BorderRadius.circular(16.0),
@@ -545,8 +545,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         color: _calendarController.isSelected(date)
             ? Colors.brown[500]
             : _calendarController.isToday(date)
-            ? Colors.brown[300]
-            : Colors.blue[400],
+                ? Colors.brown[300]
+                : Colors.blue[400],
       ),
       width: 16.0,
       height: 16.0,
@@ -668,7 +668,6 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
           ],
         ),
         const SizedBox(height: 8.0),
-
       ],
     );
   }
@@ -677,17 +676,16 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     return ListView(
       children: _selectedEvents
           .map((event) => Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 0.8),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        margin:
-        const EdgeInsets.symmetric(vertical: 4.0),
-        child: ListTile(
-          title: Text(event.toString()),
-          onTap: () => print('$event tapped!'),
-        ),
-      ))
+                decoration: BoxDecoration(
+                  border: Border.all(width: 0.8),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                margin: const EdgeInsets.symmetric(vertical: 4.0),
+                child: ListTile(
+                  title: Text(event.toString()),
+                  onTap: () => print('$event tapped!'),
+                ),
+              ))
           .toList(),
     );
   }
