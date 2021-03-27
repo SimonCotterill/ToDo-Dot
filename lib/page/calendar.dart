@@ -430,6 +430,10 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         todayColor: todoMediumGreen,
         markersColor: todoDarkGreen,
         outsideDaysVisible: false,
+        weekendStyle: TextStyle().copyWith(color: todoMediumGreen),
+      ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekendStyle: TextStyle().copyWith(color: todoMediumGreen),
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
