@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'sidebar.dart';
 import 'style.dart';
 
-
 // https://github.com/tensor-programming/flutter_timer_example/blob/master/lib/main.dart
 // https://www.youtube.com/watch?v=tRe8teyf9Nk&ab_channel=TensorProgramming
 
@@ -46,7 +45,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
       backgroundColor: todoLightGrey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
-          child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+          child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
       drawer: Drawer(
         child: SideBar(),
       ),
@@ -68,11 +67,11 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           builder: (BuildContext context, Widget child) {
                             return CustomPaint(
                                 painter: TimerPainter(
-                                  animation: controller,
-                                  backgroundColor: Colors.white,
-                                  // TODO: Change colour to dark green
-                                  color: themeData.indicatorColor,
-                                ));
+                              animation: controller,
+                              backgroundColor: Colors.white,
+                              // TODO: Change colour to dark green
+                              color: themeData.indicatorColor,
+                            ));
                           },
                         ),
                       ),

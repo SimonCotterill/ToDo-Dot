@@ -11,51 +11,45 @@ class SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: todoLightGrey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
-          child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+          child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SideButton(
-              SideIcon: Icons.home_rounded,
-              SideText: "Home Page",
-              Route: Dashboard()),
+            icon: Icons.home_rounded,
+            text: "Home Page",
+            route: Dashboard(),
+          ),
           SideButton(
-            SideIcon: Icons.assignment_rounded,
-            SideText: "To-Do List",
-            Route: Dashboard(),
+            icon: Icons.assignment_rounded,
+            text: "To-Do List",
+            route: Dashboard(),
             //TODO: Create page for this and remove default
           ),
           SideButton(
-            SideIcon: Icons.today,
-            SideText: "Calendar",
-            Route: Dashboard(),
+            icon: Icons.timer_rounded,
+            text: "Pomodoro",
+            route: Dashboard(),
             //TODO: Create page for this and remove default
           ),
           SideButton(
-            SideIcon: Icons.timer_rounded,
-            SideText: "Pomodoro",
-            Route: Dashboard(),
+            icon: Icons.today,
+            text: "Calendar",
+            route: Dashboard(),
             //TODO: Create page for this and remove default
           ),
           SideButton(
-            SideIcon: Icons.hourglass_top_rounded,
-            SideText: "Track Time",
-            Route: Dashboard(),
+            icon: Icons.add_rounded,
+            text: "Connect",
+            route: Dashboard(),
             //TODO: Create page for this and remove default
           ),
           SideButton(
-            SideIcon: Icons.add_rounded,
-            SideText: "Connect",
-            Route: Dashboard(),
-            //TODO: Create page for this and remove default
-          ),
-          SideButton(
-            SideIcon: Icons.settings,
-            SideText: "Settings",
-            Route: Settings(),
+            icon: Icons.settings,
+            text: "Settings",
+            route: Settings(),
             //TODO: Create page for this and remove default
           ),
         ],

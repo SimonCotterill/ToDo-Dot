@@ -2,31 +2,30 @@ import 'package:flutter/material.dart';
 import 'pomodoro.dart';
 import 'style.dart';
 import 'sidebar.dart';
-import 'settings.dart';
 
-void main() => runApp( MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Dashboard(),
-      theme: ThemeData(fontFamily: 'OpenSans'),
-    ));
+void main() => runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Dashboard(),
+    theme: ThemeData(
+      fontFamily: 'OpenSans',
+    )));
 
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: todoLightGrey,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(LogoName: 'assets/To_Do_Light.png')),
+            child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
         drawer: Drawer(
           child: SideBar(),
         ),
         //Buttons
         body: SafeArea(
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 80),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(
@@ -34,40 +33,32 @@ class Dashboard extends StatelessWidget {
                   spacing: 20,
                   runSpacing: 20.0,
                   children: <Widget>[
-                    HomeButtonStLess(
-                      ButtonIcon: Icons.hourglass_top_rounded,
-                      TextIcon: "Track Time",
-                      Route: Dashboard(),
+                    HomeButton(
+                      icon: Icons.assignment_rounded,
+                      text: "To-Do List",
+                      routestful: Pomodoro(),
+                      isStLess: false,
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButtonStFul(
-                      ButtonIcon: Icons.timer_rounded,
-                      TextIcon: "Pomodoro",
-                      Route: Pomodoro(),
+                    HomeButton(
+                      icon: Icons.timer_rounded,
+                      text: "Pomodoro",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButtonStLess(
-                      ButtonIcon: Icons.today,
-                      TextIcon: "Calendar",
-                      Route: Dashboard(),
+                    HomeButton(
+                      icon: Icons.today,
+                      text: "Calendar",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
-                    HomeButtonStLess(
-                      ButtonIcon: Icons.assignment_rounded,
-                      TextIcon: "To-Do List",
-                      Route: Dashboard(),
-                      //TODO: Create page for this and remove default
-                    ),
-                    HomeButtonStLess(
-                      ButtonIcon: Icons.add_rounded,
-                      TextIcon: "Connect",
-                      Route: Dashboard(),
-                      //TODO: Create page for this and remove default
-                    ),
-                    HomeButtonStLess(
-                      ButtonIcon: Icons.settings,
-                      TextIcon: "Settings",
-                      Route: Settings(),
+                    HomeButton(
+                      icon: Icons.add_rounded,
+                      text: "Connect",
+                      routestless: Dashboard(),
+                      isStLess: true,
                       //TODO: Create page for this and remove default
                     ),
                   ],
