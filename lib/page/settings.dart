@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
 
 class Settings extends StatelessWidget {
