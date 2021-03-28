@@ -4,9 +4,9 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'package:todo_dot/style.dart';
+import 'package:todo_dot/helper/bluetoothstateText.dart';
 import 'sidebar.dart';
 import 'discovery.dart';
-import 'bluetoothchat.dart';
 import 'selectdevice.dart';
 import 'package:todo_dot/helper/background_collecting_task.dart';
 import 'background_collected.dart';
@@ -21,8 +21,10 @@ class Connect extends StatefulWidget {
 class _Connect extends State<Connect> {
   BluetoothState _bluetoothState = BluetoothState.UNKNOWN;
 
+  /* 
   String _address = "...";
   String _name = "...";
+  */
 
   Timer _discoverableTimeoutTimer;
   int _discoverableTimeoutSecondsLeft = 0;
@@ -42,7 +44,7 @@ class _Connect extends State<Connect> {
       });
     });
 
-    Future.doWhile(() async {
+/*     Future.doWhile(() async {
       // Wait if adapter not enabled
       if (await FlutterBluetoothSerial.instance.isEnabled) {
         return false;
@@ -62,7 +64,7 @@ class _Connect extends State<Connect> {
       setState(() {
         _name = name;
       });
-    });
+    }); */
 
     // Listen for futher state changes
     FlutterBluetoothSerial.instance
@@ -99,7 +101,11 @@ class _Connect extends State<Connect> {
         child: ListView(
           children: <Widget>[
             Divider(),
-            ListTile(title: const Text('General')),
+            ListTile(
+                title: const Text(
+              'General',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )),
             SwitchListTile(
               title: const Text('Enable Bluetooth'),
               value: _bluetoothState.isEnabled,
@@ -120,7 +126,8 @@ class _Connect extends State<Connect> {
             ),
             ListTile(
               title: const Text('Bluetooth status'),
-              subtitle: Text(_bluetoothState.toString()),
+              subtitle: Text(
+                  BluetoothStateHelper.bluetoothStateToString(_bluetoothState)),
               trailing: RaisedButton(
                 child: const Text('Settings'),
                 onPressed: () {
@@ -128,7 +135,7 @@ class _Connect extends State<Connect> {
                 },
               ),
             ),
-            ListTile(
+            /* ListTile(
               title: const Text('Local adapter address'),
               subtitle: Text(_address),
             ),
@@ -136,13 +143,13 @@ class _Connect extends State<Connect> {
               title: const Text('Local adapter name'),
               subtitle: Text(_name),
               onLongPress: null,
-            ),
+            ), */
             ListTile(
               title: _discoverableTimeoutSecondsLeft == 0
                   ? const Text("Discoverable")
                   : Text(
                       "Discoverable for ${_discoverableTimeoutSecondsLeft}s"),
-              subtitle: const Text("PsychoX-Luna"),
+              subtitle: const Text("To-Do Dot"),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -195,7 +202,11 @@ class _Connect extends State<Connect> {
               ),
             ),
             Divider(),
-            ListTile(title: const Text('Devices discovery and connection')),
+            ListTile(
+                title: const Text(
+              'Devices discovery and connection',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )),
             SwitchListTile(
               title: const Text('Auto-try specific pin when pairing'),
               subtitle: const Text('Pin 1234'),
@@ -238,28 +249,6 @@ class _Connect extends State<Connect> {
                       print('Discovery -> no device selected');
                     }
                   }),
-            ),
-            ListTile(
-              title: RaisedButton(
-                child: const Text('Connect to paired device to chat'),
-                onPressed: () async {
-                  final BluetoothDevice selectedDevice =
-                      await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SelectBondedDevicePage(checkAvailability: false);
-                      },
-                    ),
-                  );
-
-                  if (selectedDevice != null) {
-                    print('Connect -> selected ' + selectedDevice.address);
-                    _startChat(context, selectedDevice);
-                  } else {
-                    print('Connect -> no device selected');
-                  }
-                },
-              ),
             ),
             Divider(),
             ListTile(title: const Text('Multiple connections example')),
@@ -316,16 +305,6 @@ class _Connect extends State<Connect> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _startChat(BuildContext context, BluetoothDevice server) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          return ChatPage(server: server);
-        },
       ),
     );
   }
