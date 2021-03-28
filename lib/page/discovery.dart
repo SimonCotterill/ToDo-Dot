@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'package:todo_dot/style.dart';
+import 'sidebar.dart';
 
 class DiscoveryPage extends StatefulWidget {
   /// If true, discovery starts on page start, otherwise user must press action button.
@@ -68,25 +69,51 @@ class _DiscoveryPage extends State<DiscoveryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: isDiscovering
-            ? Text('Discovering devices')
-            : Text('Discovered devices'),
-        actions: <Widget>[
-          isDiscovering
-              ? FittedBox(
-                  child: Container(
-                    margin: new EdgeInsets.all(16.0),
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0),
+        child: AppBar(
+          title: Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+            child: isDiscovering
+                ? Text('Discovering devices')
+                : Text('Discovered devices'),
+          ),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
+                child: IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: todoLightGrey,
+                      size: 40,
                     ),
-                  ),
-                )
-              : IconButton(
-                  icon: Icon(Icons.replay),
-                  onPressed: _restartDiscovery,
-                )
-        ],
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    }),
+              );
+            },
+          ),
+          actions: <Widget>[
+            isDiscovering
+                ? FittedBox(
+                    child: Container(
+                      margin: new EdgeInsets.fromLTRB(16.0, 46.0, 16.0, 16.0),
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    ),
+                  )
+                : IconButton(
+                    icon: Icon(Icons.replay),
+                    onPressed: _restartDiscovery,
+                  )
+          ],
+          backgroundColor: todoDarkGreen,
+        ),
+      ),
+      drawer: Drawer(
+        child: SideBar(),
       ),
       body: ListView.builder(
         itemCount: results.length,
