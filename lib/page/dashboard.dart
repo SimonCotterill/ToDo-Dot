@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
+import 'connect.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -50,8 +51,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.add_rounded,
                       text: "Connect",
-                      routestless: Dashboard(),
-                      isStLess: true,
+                      routestful: Connect(),
+                      isStLess: false,
                       //TODO: Create page for this and remove default
                     ),
                   ],

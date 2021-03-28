@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_dot/style.dart';
+import 'connect.dart';
 import 'sidebar.dart';
 
 class Settings extends StatelessWidget {
@@ -20,7 +21,8 @@ class Settings extends StatelessWidget {
           ListButton(
             icon: Icons.access_time,
             text: 'Timezone',
-            routestless: SetTimezone(),
+            routestless: Timezone(),
+            isStLess: true,
           ),
           SizedBox(
             height: 20,
@@ -28,7 +30,8 @@ class Settings extends StatelessWidget {
           ListButton(
             icon: Icons.add_alarm,
             text: 'Manage Devices',
-            routestless: ManageDevices(),
+            routestful: Connect(),
+            isStLess: false,
           ),
         ],
       ),
@@ -38,7 +41,7 @@ class Settings extends StatelessWidget {
 
 // value is only set once and not changed
 // ignore: must_be_immutable
-class SetTimezone extends StatelessWidget {
+class Timezone extends StatelessWidget {
   String timezone = DateTime.now().timeZoneName;
 
   //assume all timezone offsets occur in hours + minutes (no seconds)
@@ -107,28 +110,5 @@ class SetTimezone extends StatelessWidget {
                 ),
               ],
             )));
-  }
-}
-
-class ManageDevices extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
-            child: ToDoAppBar(
-              headerImage: 'assets/To_Do_Light.png',
-              isSubPage: true,
-            )),
-        drawer: Drawer(
-          child: SideBar(),
-        ),
-        body: Container(
-          padding: EdgeInsets.all(40.0),
-          child: Text(
-            'Manage Devices - In Progress',
-            style: TextStyle(fontSize: 25),
-          ),
-        ));
   }
 }
