@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_dot/page/dashboard.dart';
 import 'package:todo_dot/style.dart';
 import 'settings.dart';
+import 'calendar.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
 // https://doctorcodetutorial.blogspot.com/2020/09/make-flutter-navigation-drawer-in.html
@@ -20,37 +21,42 @@ class SideBar extends StatelessWidget {
           SideButton(
             icon: Icons.home_rounded,
             text: "Home Page",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
           ),
           SideButton(
             icon: Icons.assignment_rounded,
             text: "To-Do List",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.timer_rounded,
             text: "Pomodoro",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.today,
             text: "Calendar",
-            route: Dashboard(),
+            routestful: Calendar(),
+            isStLess: false,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.add_rounded,
             text: "Connect",
-            route: Dashboard(),
+            routestless: Dashboard(),
+            isStLess: true,
             //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.settings,
             text: "Settings",
-            route: Settings(),
-            //TODO: Create page for this and remove default
+            routestless: Settings(),
+            isStLess: true,
           ),
         ],
       ),

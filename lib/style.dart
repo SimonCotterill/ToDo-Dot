@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 // project colors
 const Color todoLightGrey = Color(0xFFe9e9f2);
@@ -85,10 +86,13 @@ class ToDoAppBar extends StatelessWidget {
 
 // Button widget https://www.youtube.com/watch?v=h6OmR0TpWJU&ab_channel=LuisTheTechGuy%21
 class HomeButton extends StatelessWidget {
+  @required
   final IconData icon;
+  @required
   final String text;
   final StatefulWidget routestful;
   final StatelessWidget routestless;
+  @required
   final bool isStLess;
 
   const HomeButton({
@@ -149,25 +153,33 @@ class HomeButton extends StatelessWidget {
 
 //SideBar Buttons
 class SideButton extends StatelessWidget {
+  @required
   final IconData icon;
+  @required
   final String text;
-  final StatelessWidget route;
+  final StatefulWidget routestful;
+  final StatelessWidget routestless;
+  @required
+  final bool isStLess;
 
   const SideButton({
     this.icon,
     this.text,
-    this.route,
+    this.routestful,
+    this.routestless,
+    this.isStLess,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        onTap: () {
-          //https://medium.com/@maffan/screen-navigation-in-flutter-apps-with-data-handling-67b09cc04a75
-          Navigator.pop(context);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => route));
-        },
+        onTap: () => {
+              isStLess
+                  ? Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestless))
+                  : Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestful))
+            },
         leading: Icon(
           icon,
           color: todoMediumGreen,
@@ -186,23 +198,33 @@ class SideButton extends StatelessWidget {
 
 //Settings List Buttons
 class ListButton extends StatelessWidget {
+  @required
   final IconData icon;
+  @required
   final String text;
-  final StatelessWidget route;
+  final StatefulWidget routestful;
+  final StatelessWidget routestless;
+  @required
+  final bool isStLess;
 
   const ListButton({
     this.icon,
     this.text,
-    this.route,
+    this.routestful,
+    this.routestless,
+    this.isStLess,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => route));
-        },
+        onTap: () => {
+              isStLess
+                  ? Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestless))
+                  : Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => routestful))
+            },
         leading: Icon(
           icon,
           color: todoBlue,
@@ -226,9 +248,10 @@ class TaskContainer extends StatelessWidget {
   final String subtitle;
   final Color boxColor;
 
-
   TaskContainer({
-    this.title, this.subtitle, this.boxColor,
+    this.title,
+    this.subtitle,
+    this.boxColor,
   });
 
   @override
@@ -236,7 +259,6 @@ class TaskContainer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15.0),
       padding: EdgeInsets.all(20.0),
-
       child: InkWell(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,7 +270,6 @@ class TaskContainer extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Text(
@@ -267,11 +288,9 @@ class TaskContainer extends StatelessWidget {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => ))
         },  */
-
       ),
       decoration: BoxDecoration(
-          color: boxColor,
-          borderRadius: BorderRadius.circular(30.0)),
+          color: boxColor, borderRadius: BorderRadius.circular(30.0)),
     );
   }
 }

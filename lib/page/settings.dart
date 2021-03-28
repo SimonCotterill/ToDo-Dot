@@ -20,7 +20,7 @@ class Settings extends StatelessWidget {
           ListButton(
             icon: Icons.access_time,
             text: 'Timezone',
-            route: SetTimezone(),
+            routestless: SetTimezone(),
           ),
           SizedBox(
             height: 20,
@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
           ListButton(
             icon: Icons.add_alarm,
             text: 'Manage Devices',
-            route: ManageDevices(),
+            routestless: ManageDevices(),
           ),
         ],
       ),
