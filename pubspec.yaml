@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.16.1
+  table_calendar: ^2.3.3
 
   # firebase
   firebase_core: "^0.7.0"

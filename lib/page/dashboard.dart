@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
 import 'pomodoro.dart';
@@ -42,8 +43,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.today,
                       text: "Calendar",
-                      routestless: Dashboard(),
-                      isStLess: true,
+                      routestful: Calendar(),
+                      isStLess: false,
                       //TODO: Create page for this and remove default
                     ),
                     HomeButton(
