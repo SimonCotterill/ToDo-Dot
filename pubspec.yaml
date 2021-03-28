@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   circular_check_box: ^1.0.4
+  intl: ^0.16.1
+  table_calendar: ^2.3.3
 
   # firebase
   firebase_core: "^0.7.0"
