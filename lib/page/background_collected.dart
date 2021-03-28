@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'sidebar.dart';
+import 'package:todo_dot/style.dart';
 import 'package:todo_dot/helper/background_collecting_task.dart';
 import 'package:todo_dot/helper/linechart.dart';
 import 'package:todo_dot/helper/paintstyle.dart';
@@ -60,24 +62,70 @@ class BackgroundCollectedPage extends StatelessWidget {
     });
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Collected data'),
-          actions: <Widget>[
-            // Progress circle
-            (task.inProgress
-                ? FittedBox(
-                    child: Container(
-                        margin: new EdgeInsets.all(16.0),
-                        child: CircularProgressIndicator(
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white))))
-                : Container(/* Dummy */)),
-            // Start/stop buttons
-            (task.inProgress
-                ? IconButton(icon: Icon(Icons.pause), onPressed: task.pause)
-                : IconButton(
-                    icon: Icon(Icons.play_arrow), onPressed: task.resume)),
-          ],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: AppBar(
+            elevation: 25.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(5.0),
+              ),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+              child: Text('Collected data'),
+            ),
+            leading: Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.menu,
+                        color: todoLightGrey,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      }),
+                );
+              },
+            ),
+            backgroundColor: todoDarkGreen,
+            actions: <Widget>[
+              // Progress circle
+              (task.inProgress
+                  ? FittedBox(
+                      child: Container(
+                          margin:
+                              new EdgeInsets.fromLTRB(16.0, 46.0, 16.0, 16.0),
+                          child: CircularProgressIndicator(
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white))))
+                  : Container()),
+              // Start/stop buttons
+              (task.inProgress
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 8.0),
+                      child: Container(
+                          child: IconButton(
+                              icon: Icon(Icons.pause), onPressed: task.pause)),
+                    )
+                  : Container(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 8.0),
+                        child: IconButton(
+                            icon: Icon(Icons.play_arrow),
+                            onPressed: task.resume),
+                      ),
+                    )),
+            ],
+          ),
+        ),
+        drawer: Drawer(
+          child: SideBar(),
         ),
         body: ListView(
           children: <Widget>[

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'package:todo_dot/style.dart';
+import 'sidebar.dart';
 
 class SelectBondedDevicePage extends StatefulWidget {
   /// If true, on page start there is performed discovery upon the bonded devices.
@@ -118,25 +119,66 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
             ))
         .toList();
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Select device'),
-        actions: <Widget>[
-          _isDiscovering
-              ? FittedBox(
-                  child: Container(
-                    margin: new EdgeInsets.all(16.0),
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0),
+        child: AppBar(
+          elevation: 25.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(5.0),
+            ),
+          ),
+          title: Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
+            child: Text('Select device'),
+          ),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(5, 12, 0, 0),
+                child: IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: todoLightGrey,
+                      size: 40,
+                    ),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    }),
+              );
+            },
+          ),
+          backgroundColor: todoDarkGreen,
+          actions: <Widget>[
+            _isDiscovering
+                ? FittedBox(
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 8.0),
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                )
-              : IconButton(
-                  icon: Icon(Icons.replay),
-                  onPressed: _restartDiscovery,
-                )
-        ],
+                  )
+                : Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 8.0),
+                      child: IconButton(
+                        icon: Icon(Icons.replay),
+                        onPressed: _restartDiscovery,
+                      ),
+                    ),
+                  )
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: SideBar(),
       ),
       body: ListView(children: list),
     );

@@ -72,6 +72,12 @@ class _DiscoveryPage extends State<DiscoveryPage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0),
         child: AppBar(
+          elevation: 25.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(5.0),
+            ),
+          ),
           title: Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
             child: isDiscovering
@@ -94,22 +100,28 @@ class _DiscoveryPage extends State<DiscoveryPage> {
               );
             },
           ),
+          backgroundColor: todoDarkGreen,
           actions: <Widget>[
             isDiscovering
                 ? FittedBox(
                     child: Container(
-                      margin: new EdgeInsets.fromLTRB(16.0, 46.0, 16.0, 16.0),
+                      margin: new EdgeInsets.fromLTRB(16.0, 46.0, 20.0, 16.0),
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     ),
                   )
-                : IconButton(
-                    icon: Icon(Icons.replay),
-                    onPressed: _restartDiscovery,
+                : Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 8.0),
+                      child: IconButton(
+                        icon: Icon(Icons.replay),
+                        onPressed: _restartDiscovery,
+                      ),
+                    ),
                   )
           ],
-          backgroundColor: todoDarkGreen,
         ),
       ),
       drawer: Drawer(
