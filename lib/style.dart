@@ -39,8 +39,6 @@ class ToDoAppBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         // Source: https://stackoverflow.com/questions/43981406/how-to-center-the-title-of-an-appbar
         children: [
-          //todo: COMMENT: Maybe text or image? both might be a little much
-          // Removed: Text('Home Page'),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Image.asset(headerImage, fit: BoxFit.contain, height: 50),
