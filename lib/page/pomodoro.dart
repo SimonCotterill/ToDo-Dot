@@ -6,12 +6,16 @@ import 'sidebar.dart';
 // https://github.com/tensor-programming/flutter_timer_example/blob/master/lib/main.dart
 // https://www.youtube.com/watch?v=tRe8teyf9Nk&ab_channel=TensorProgramming
 
+
+
 class Pomodoro extends StatefulWidget {
   @override
   PomodoroState createState() => PomodoroState();
 }
 
+// timer variable
 class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
+  var _timer = 10;
   AnimationController controller;
 
   // bool isPlaying = false;
@@ -26,7 +30,8 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 10),
+      // change duration with timer variable
+      duration: Duration(seconds: _timer),
     );
 
     // ..addStatusListener((status) {
@@ -69,8 +74,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                                 painter: TimerPainter(
                               animation: controller,
                               backgroundColor: Colors.white,
-                              // TODO: Change colour to dark green
-                              color: themeData.indicatorColor,
+                              color: todoMediumGreen,
                             ));
                           },
                         ),
@@ -101,45 +105,96 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                 ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: 40.0,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: todoMediumGreen,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: FlatButton(
+                    onPressed: () {
+                      // setting timer state
+                      setState(() => _timer = 20);
+                    },
+                    child: Center(
+                      child: Text(
+                        '25 min',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 40.0,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: todoMediumGreen,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: FlatButton(
+                    onPressed: () {
+                    },
+                    child: Center(
+                      child: Text(
+                        '5 min',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
             Container(
               margin: EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  // TODO: Add button for 25 min and 5 min
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: FloatingActionButton(
+                      child: AnimatedBuilder(
+                        animation: controller,
+                        builder: (BuildContext context, Widget child) {
+                          return Icon(controller.isAnimating
+                              ? Icons.pause
+                              : Icons.play_arrow);
 
-                  // TODO: Make button higher
-                  FloatingActionButton(
-                    // TODO: Change colour to dark green
-                    child: AnimatedBuilder(
-                      animation: controller,
-                      builder: (BuildContext context, Widget child) {
-                        return Icon(controller.isAnimating
-                            ? Icons.pause
-                            : Icons.play_arrow);
+                          // Icon(isPlaying
+                          // ? Icons.pause
+                          // : Icons.play_arrow);
+                        },
+                      ),
+                      onPressed: () {
+                        // setState(() => isPlaying = !isPlaying);
 
-                        // Icon(isPlaying
-                        // ? Icons.pause
-                        // : Icons.play_arrow);
+                        if (controller.isAnimating) {
+                          controller.stop(canceled: true);
+                        } else {
+                          controller.reverse(
+                              from: controller.value == 0.0
+                                  ? 1.0
+                                  : controller.value);
+                        }
                       },
+                      backgroundColor: todoDarkGreen,
                     ),
-                    onPressed: () {
-                      // setState(() => isPlaying = !isPlaying);
-
-                      if (controller.isAnimating) {
-                        controller.stop(canceled: true);
-                      } else {
-                        controller.reverse(
-                            from: controller.value == 0.0
-                                ? 1.0
-                                : controller.value);
-                      }
-                    },
                   )
                 ],
               ),
             )
           ],
+
         ),
       ),
     );
