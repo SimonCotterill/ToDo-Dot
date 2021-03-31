@@ -6,19 +6,16 @@ import 'sidebar.dart';
 // https://github.com/tensor-programming/flutter_timer_example/blob/master/lib/main.dart
 // https://www.youtube.com/watch?v=tRe8teyf9Nk&ab_channel=TensorProgramming
 
-
-
 class Pomodoro extends StatefulWidget {
   @override
   PomodoroState createState() => PomodoroState();
 }
 
-// timer variable
 class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
-  var _timer = 10;
   AnimationController controller;
 
   // bool isPlaying = false;
+  var _timer = 10;
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
@@ -31,7 +28,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
     controller = AnimationController(
       vsync: this,
       // change duration with timer variable
-      duration: Duration(seconds: _timer),
+      duration: Duration(minutes: _timer),
     );
 
     // ..addStatusListener((status) {
@@ -41,6 +38,15 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
 
     //     print(status);
     //   })
+  }
+
+  void _setTimer(int time) {
+    setState(() => _timer = time);
+    controller = AnimationController(
+      vsync: this,
+      // change duration with timer variable
+      duration: Duration(minutes: time),
+    );
   }
 
   @override
@@ -85,10 +91,21 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Text(
-                              "Count Down",
-                              style: themeData.textTheme.subtitle1,
-                            ),
+                            Column(children: <Widget>[
+                              Text(
+                                "Time Remaining",
+                                style: themeData.textTheme.subtitle1,
+                              ),
+                              _timer == 25
+                                  ? Text(
+                                      "Study",
+                                      style: themeData.textTheme.subtitle1,
+                                    )
+                                  : Text(
+                                      "Break",
+                                      style: themeData.textTheme.subtitle1,
+                                    ),
+                            ]),
                             AnimatedBuilder(
                                 animation: controller,
                                 builder: (BuildContext context, Widget child) {
@@ -117,8 +134,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                   ),
                   child: FlatButton(
                     onPressed: () {
-                      // setting timer state
-                      setState(() => _timer = 20);
+                      _setTimer(25);
                     },
                     child: Center(
                       child: Text(
@@ -140,6 +156,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                   ),
                   child: FlatButton(
                     onPressed: () {
+                      _setTimer(5);
                     },
                     child: Center(
                       child: Text(
@@ -194,7 +211,6 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
               ),
             )
           ],
-
         ),
       ),
     );
