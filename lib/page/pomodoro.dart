@@ -14,8 +14,10 @@ class Pomodoro extends StatefulWidget {
 class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
   AnimationController controller;
 
+  var _timer = 25;
+
+  // TODO implement isPlaying
   // bool isPlaying = false;
-  var _timer = 10;
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
@@ -44,7 +46,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
     setState(() => _timer = time);
     controller = AnimationController(
       vsync: this,
-      // change duration with timer variable
+      // reset duration
       duration: Duration(minutes: time),
     );
   }
@@ -122,55 +124,65 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: 40.0,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    color: todoMediumGreen,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: FlatButton(
-                    onPressed: () {
-                      _setTimer(25);
-                    },
-                    child: Center(
-                      child: Text(
-                        '25 min',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16),
+            Container(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  var parentWidth = constraints.maxWidth;
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 40.0,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: todoMediumGreen,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: FlatButton(
+                          onPressed: () {
+                            _setTimer(25);
+                          },
+                          child: Center(
+                            child: Text(
+                              '25 min',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 40.0,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    color: todoMediumGreen,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: FlatButton(
-                    onPressed: () {
-                      _setTimer(5);
-                    },
-                    child: Center(
-                      child: Text(
-                        '5 min',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16),
+                      Container(
+                        width: parentWidth * 0.1,
                       ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-              ],
+                      Container(
+                        height: 40.0,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          color: todoMediumGreen,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: FlatButton(
+                          onPressed: () {
+                            _setTimer(5);
+                          },
+                          child: Center(
+                            child: Text(
+                              '5 min',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  );
+                },
+              ),
             ),
             Container(
               margin: EdgeInsets.all(8.0),
@@ -186,7 +198,6 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           return Icon(controller.isAnimating
                               ? Icons.pause
                               : Icons.play_arrow);
-
                           // Icon(isPlaying
                           // ? Icons.pause
                           // : Icons.play_arrow);
@@ -194,7 +205,6 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                       ),
                       onPressed: () {
                         // setState(() => isPlaying = !isPlaying);
-
                         if (controller.isAnimating) {
                           controller.stop(canceled: true);
                         } else {
