@@ -7,7 +7,6 @@ import 'package:todo_dot/helper/bluetoothstateText.dart';
 import 'sidebar.dart';
 import 'discovery.dart';
 import 'selectdevice.dart';
-import 'package:todo_dot/helper/background_collecting_task.dart';
 
 // https://www.youtube.com/watch?v=WUw-_X66dLE
 
@@ -21,8 +20,6 @@ class _Connect extends State<Connect> {
 
   Timer _discoverableTimeoutTimer;
   int _discoverableTimeoutSecondsLeft = 0;
-
-  BackgroundCollectingTask _collectingTask;
 
   @override
   void initState() {
@@ -52,7 +49,6 @@ class _Connect extends State<Connect> {
   @override
   void dispose() {
     FlutterBluetoothSerial.instance.setPairingRequestHandler(null);
-    _collectingTask?.dispose();
     _discoverableTimeoutTimer?.cancel();
     super.dispose();
   }
