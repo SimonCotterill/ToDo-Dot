@@ -118,10 +118,6 @@ class _Connect extends State<Connect> {
                     onChanged: null,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: null,
-                  ),
-                  IconButton(
                     icon: const Icon(Icons.refresh),
                     onPressed: () async {
                       print('Discoverable requested');
