@@ -46,14 +46,12 @@ class Dashboard extends StatelessWidget {
                       text: "Calendar",
                       routestful: Calendar(),
                       isStLess: false,
-                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       icon: Icons.add_rounded,
                       text: "Connect",
                       routestful: Connect(),
                       isStLess: false,
-                      //TODO: Create page for this and remove default
                     ),
                   ],
                 ),
