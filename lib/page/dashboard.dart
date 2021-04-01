@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
+import 'pomodoro.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -36,9 +37,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.timer_rounded,
                       text: "Pomodoro",
-                      routestless: Dashboard(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
+                      routestful: Pomodoro(),
+                      isStLess: false,
                     ),
                     HomeButton(
                       icon: Icons.today,
