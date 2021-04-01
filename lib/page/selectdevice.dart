@@ -154,8 +154,8 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
                 ? FittedBox(
                     child: Container(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 20.0, horizontal: 8.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(16.0, 50.0, 30.0, 16.0),
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.white,

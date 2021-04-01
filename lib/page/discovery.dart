@@ -105,7 +105,7 @@ class _DiscoveryPage extends State<DiscoveryPage> {
             isDiscovering
                 ? FittedBox(
                     child: Container(
-                      margin: new EdgeInsets.fromLTRB(16.0, 46.0, 20.0, 16.0),
+                      margin: new EdgeInsets.fromLTRB(16.0, 50.0, 30.0, 16.0),
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
@@ -144,13 +144,14 @@ class _DiscoveryPage extends State<DiscoveryPage> {
                   print('Unbonding from ${result.device.address}...');
                   await FlutterBluetoothSerial.instance
                       .removeDeviceBondWithAddress(result.device.address);
-                  print('Unbonding from ${result.device.address} has succed');
+                  print(
+                      'Unbonding from ${result.device.address} has succeeded');
                 } else {
                   print('Bonding with ${result.device.address}...');
                   bonded = await FlutterBluetoothSerial.instance
                       .bondDeviceAtAddress(result.device.address);
                   print(
-                      'Bonding with ${result.device.address} has ${bonded ? 'succed' : 'failed'}.');
+                      'Bonding with ${result.device.address} has ${bonded ? 'succeeded' : 'failed'}.');
                 }
                 setState(() {
                   results[results.indexOf(result)] = BluetoothDiscoveryResult(
