@@ -91,12 +91,16 @@ class _AddTaskState extends State<AddTask> {
                 fontWeight: FontWeight.bold,
                 fontSize: 23,
               )),
+          // TODO: Add close button if user doesn't want to add task
           SizedBox(height: 10),
           TaskForm(
             onChangedTitle: (title) => setState(() => this.title = title),
             onChangedDescription: (description) =>
                 setState(() => this.description = description),
-            onSavedTodo: () {},
+            onSavedTask: () {
+              // save task to database
+              // return to To-Do List
+            },
           ),
         ],
       ));
@@ -105,9 +109,10 @@ class _AddTaskState extends State<AddTask> {
 class TaskForm extends StatelessWidget {
   final String title;
   final String description;
+  // final DateTime alarmTime;
   final ValueChanged<String> onChangedTitle;
   final ValueChanged<String> onChangedDescription;
-  final VoidCallback onSavedTodo;
+  final VoidCallback onSavedTask;
 
   const TaskForm({
     Key key,
@@ -115,7 +120,7 @@ class TaskForm extends StatelessWidget {
     this.description = '',
     @required this.onChangedTitle,
     @required this.onChangedDescription,
-    @required this.onSavedTodo,
+    @required this.onSavedTask,
   }) : super(key: key);
 
   @override
@@ -166,7 +171,7 @@ class TaskForm extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         child: FlatButton(
-          onPressed: onSavedTodo,
+          onPressed: onSavedTask,
           child: Center(
             child: Text(
               'Save',
