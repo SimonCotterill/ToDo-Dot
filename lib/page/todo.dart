@@ -193,12 +193,22 @@ class TaskWidget extends StatelessWidget {
         child: Row(
           children: [
             CircularCheckBox(
-                value: task.isComplete,
-                checkColor: Colors.white,
-                activeColor: todoMediumGreen,
-                inactiveColor: Colors.redAccent,
-                disabledColor: Colors.grey,
-                onChanged: (_) {}),
+              value: task.isComplete,
+              checkColor: Colors.white,
+              activeColor: todoMediumGreen,
+              inactiveColor: Colors.redAccent,
+              disabledColor: Colors.grey,
+              onChanged: (_) {
+                final provider =
+                    Provider.of<TaskProvider>(context, listen: false);
+                final isDone = provider.toggleCompleteStatus(task);
+
+                Utils.showSnackBar(
+                  context,
+                  isDone ? 'Task completed' : 'Task marked incomplete',
+                );
+              },
+            ),
             SizedBox(
               width: 20,
             ),
@@ -227,6 +237,7 @@ class TaskWidget extends StatelessWidget {
           ],
         ),
       );
+
   void deleteTask(BuildContext context, Task task) {
     final provider = Provider.of<TaskProvider>(context, listen: false);
     provider.removeTask(task);
@@ -241,8 +252,6 @@ class TaskWidget extends StatelessWidget {
       );
 }
 
-// onTap: ()=> this.setState(() { this.selected= !this.selected ;}),
-//
 Widget buildText(String text) => Center(
       child: Text(
         text,
