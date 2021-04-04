@@ -109,7 +109,7 @@ class HomeButton extends StatelessWidget {
         width: 160.0,
         height: 180.0,
         child: Card(
-            color: todoBlue,
+            color: todoMediumGreen,
             elevation: 15.0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(35.0)),

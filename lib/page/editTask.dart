@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
+import 'package:todo_dot/page/datepicker.dart';
 import 'package:todo_dot/widget/taskform.dart';
 
 import 'sidebar.dart';
@@ -45,14 +46,21 @@ class _EditTaskPageState extends State<EditTaskPage> {
           padding: EdgeInsets.all(16),
           child: Form(
             key: _formKey,
-            child: TaskForm(
-              title: title,
-              description: description,
-              onChangedTitle: (title) => setState(() => this.title = title),
-              onChangedDescription: (description) =>
-                  setState(() => this.description = description),
-              onSavedTask: saveTask,
-              onDeleteTask: deleteTask,
+            child: Column(
+              children: [
+                DatePickerWidget(),
+                SizedBox(height: 10),
+                TimePickerWidget(),
+                TaskForm(
+                  title: title,
+                  description: description,
+                  onChangedTitle: (title) => setState(() => this.title = title),
+                  onChangedDescription: (description) =>
+                      setState(() => this.description = description),
+                  onSavedTask: saveTask,
+                  onDeleteTask: deleteTask,
+                ),
+              ],
             ),
           ),
         ),

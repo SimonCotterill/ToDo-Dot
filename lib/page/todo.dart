@@ -3,6 +3,7 @@ import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
+import 'package:todo_dot/page/datepicker.dart';
 import 'package:todo_dot/widget/todo_list.dart';
 import 'package:todo_dot/widget/taskform.dart';
 import 'package:todo_dot/database/database.dart';
@@ -117,6 +118,9 @@ class _AddTaskState extends State<AddTask> {
                   fontSize: 23,
                 )),
             SizedBox(height: 10),
+            DatePickerWidget(),
+            SizedBox(height: 10),
+            TimePickerWidget(),
             TaskForm(
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
