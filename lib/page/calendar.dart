@@ -5,6 +5,8 @@ import 'package:todo_dot/helper/dates_list.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'todo.dart';
+
 // https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/lib/screens/calendar_page.dart
 
 //  Copyright (c) 2019 Aleksander Woźniak
@@ -170,15 +172,11 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: FlatButton(
-                          onPressed: () {
-                            //   Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       //TODO: Create task page
-                            //       //builder: (context) => ,
-                            //     ),
-                            //   );
-                          },
+                          onPressed: () => showDialog(
+                          context: context,
+                          child: AddTask(),
+                          barrierDismissible: false,
+                        ),
                           child: Center(
                             child: Text(
                               'Add task',

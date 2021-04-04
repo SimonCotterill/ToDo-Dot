@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
+import 'todo.dart';
 import 'connect.dart';
 import 'pomodoro.dart';
 
@@ -31,9 +32,8 @@ class Dashboard extends StatelessWidget {
                     HomeButton(
                       icon: Icons.assignment_rounded,
                       text: "To-Do List",
-                      routestless: Dashboard(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
+                      routestful: ToDo(),
+                      isStLess: false,
                     ),
                     HomeButton(
                       icon: Icons.timer_rounded,

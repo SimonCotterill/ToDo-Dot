@@ -4,6 +4,7 @@ import 'package:todo_dot/page/pomodoro.dart';
 import 'package:todo_dot/style.dart';
 import 'settings.dart';
 import 'calendar.dart';
+import 'todo.dart';
 import 'connect.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
@@ -29,8 +30,8 @@ class SideBar extends StatelessWidget {
           SideButton(
             icon: Icons.assignment_rounded,
             text: "To-Do List",
-            routestless: Dashboard(),
-            isStLess: true,
+            routestful: ToDo(),
+            isStLess: false,
             //TODO: Create page for this and remove default
           ),
           SideButton(
