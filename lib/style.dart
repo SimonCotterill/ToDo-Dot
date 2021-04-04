@@ -74,7 +74,7 @@ class ToDoAppBar extends StatelessWidget {
                     color: todoLightGrey,
                     size: 40,
                   ),
-                  onPressed: () => Navigator.of(context).pop(null),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
               )
             : Container(),
@@ -241,7 +241,6 @@ class ListButton extends StatelessWidget {
 }
 
 // Calendar Task Container
-
 class TaskContainer extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -282,11 +281,6 @@ class TaskContainer extends StatelessWidget {
             )
           ],
         ),
-        //TODO: on tap goes to the task
-        /* onTap: () => {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => ))
-        },  */
       ),
       decoration: BoxDecoration(
           color: boxColor, borderRadius: BorderRadius.circular(30.0)),
@@ -369,7 +363,7 @@ class BluetoothDeviceListEntry extends ListTile {
         );
 
   static TextStyle _computeTextStyle(int rssi) {
-    /**/ if (rssi >= -35)
+    if (rssi >= -35)
       return TextStyle(color: Colors.greenAccent[700]);
     else if (rssi >= -45)
       return TextStyle(
@@ -391,7 +385,6 @@ class BluetoothDeviceListEntry extends ListTile {
           color: Color.lerp(
               Colors.deepOrangeAccent, Colors.redAccent, -(rssi + 75) / 10));
     else
-      /*code symetry*/
       return TextStyle(color: Colors.redAccent);
   }
 }

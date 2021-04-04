@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
-import 'package:todo_dot/page/todo.dart';
+import 'taskwidget.dart';
 
 class ToDoList extends StatelessWidget {
   @override

@@ -42,6 +42,12 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
     //   })
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
   void _setTimer(int time) {
     setState(() => _timer = time);
     controller = AnimationController(
@@ -140,6 +146,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                         ),
                         child: FlatButton(
                           onPressed: () {
+                            _timer = 25;
                             _setTimer(25);
                           },
                           child: Center(
@@ -165,6 +172,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                         ),
                         child: FlatButton(
                           onPressed: () {
+                            _timer = 5;
                             _setTimer(5);
                           },
                           child: Center(
@@ -209,6 +217,7 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           controller.stop(canceled: true);
                         } else {
                           controller.reverse(
+                              // send _timer to to-do dot device for alert
                               from: controller.value == 0.0
                                   ? 1.0
                                   : controller.value);
