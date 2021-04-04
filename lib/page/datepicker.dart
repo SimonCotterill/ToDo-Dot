@@ -17,16 +17,15 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       return 'Select Date';
     } else {
       return DateFormat('MM/dd/yyyy').format(date);
-      // return '${date.month}/${date.day}/${date.year}';
     }
   }
 
   @override
   Widget build(BuildContext context) => ButtonHeaderWidget(
-    title: 'Date',
-    text: getText(),
-    onClicked: () => pickDate(context),
-  );
+        title: 'Date',
+        text: getText(),
+        onClicked: () => pickDate(context),
+      );
 
   Future pickDate(BuildContext context) async {
     final initialDate = DateTime.now();
@@ -42,9 +41,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
             primaryColor: todoDarkGreen,
             accentColor: todoMediumGreen,
             colorScheme: ColorScheme.light(primary: todoDarkGreen),
-            buttonTheme: ButtonThemeData(
-                textTheme: ButtonTextTheme.primary
-            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child,
         );
@@ -71,12 +68,12 @@ class ButtonHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => HeaderWidget(
-    title: title,
-    child: ButtonWidget(
-      text: text,
-      onClicked: onClicked,
-    ),
-  );
+        title: title,
+        child: ButtonWidget(
+          text: text,
+          onClicked: onClicked,
+        ),
+      );
 }
 
 class ButtonWidget extends StatelessWidget {
@@ -91,22 +88,20 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-
-    style: ElevatedButton.styleFrom(
-      minimumSize: Size.fromHeight(40),
-      primary: todoMediumGreen,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-      )
-    ),
-    child: FittedBox(
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 20, color: Colors.white),
-      ),
-    ),
-    onPressed: onClicked,
-  );
+        style: ElevatedButton.styleFrom(
+            minimumSize: Size.fromHeight(40),
+            primary: todoMediumGreen,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            )),
+        child: FittedBox(
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ),
+        onPressed: onClicked,
+      );
 }
 
 class HeaderWidget extends StatelessWidget {
@@ -121,21 +116,20 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        title,
-        style: TextStyle(
-          color: Colors.grey[700],
-          fontSize: 16,
-        ),
-      ),
-      const SizedBox(height: 8),
-      child,
-    ],
-  );
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: Colors.grey[700],
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(height: 8),
+          child,
+        ],
+      );
 }
-
 
 class TimePickerWidget extends StatefulWidget {
   @override
@@ -158,10 +152,10 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
 
   @override
   Widget build(BuildContext context) => ButtonHeaderWidget(
-    title: 'Time',
-    text: getText(),
-    onClicked: () => pickTime(context),
-  );
+        title: 'Time',
+        text: getText(),
+        onClicked: () => pickTime(context),
+      );
 
   Future pickTime(BuildContext context) async {
     final initialTime = TimeOfDay(hour: 9, minute: 0);
@@ -174,9 +168,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
             primaryColor: todoDarkGreen,
             accentColor: todoMediumGreen,
             colorScheme: ColorScheme.light(primary: todoDarkGreen),
-            buttonTheme: ButtonThemeData(
-                textTheme: ButtonTextTheme.primary
-            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child,
         );
@@ -207,10 +199,10 @@ class _DatetimePickerWidgetState extends State<DatetimePickerWidget> {
 
   @override
   Widget build(BuildContext context) => ButtonHeaderWidget(
-    title: 'Date and Time',
-    text: getText(),
-    onClicked: () => pickDateTime(context),
-  );
+        title: 'Date and Time',
+        text: getText(),
+        onClicked: () => pickDateTime(context),
+      );
 
   Future pickDateTime(BuildContext context) async {
     final date = await pickDate(context);
@@ -243,9 +235,7 @@ class _DatetimePickerWidgetState extends State<DatetimePickerWidget> {
             primaryColor: todoDarkGreen,
             accentColor: todoMediumGreen,
             colorScheme: ColorScheme.light(primary: todoDarkGreen),
-            buttonTheme: ButtonThemeData(
-                textTheme: ButtonTextTheme.primary
-            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child,
         );
@@ -270,9 +260,7 @@ class _DatetimePickerWidgetState extends State<DatetimePickerWidget> {
             primaryColor: todoDarkGreen,
             accentColor: todoMediumGreen,
             colorScheme: ColorScheme.light(primary: todoDarkGreen),
-            buttonTheme: ButtonThemeData(
-                textTheme: ButtonTextTheme.primary
-            ),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child,
         );
