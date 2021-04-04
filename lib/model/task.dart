@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todo_dot/database/database.dart';
 import 'package:todo_dot/database/utils.dart';
+import 'package:todo_dot/page/todo.dart';
 
 // https://github.com/JohannesMilke/todo_app_firestore_example
 class Task {
@@ -40,7 +41,17 @@ class Task {
 }
 
 class TaskProvider extends ChangeNotifier {
-  List<Task> _tasks = [];
+  List<Task> _tasks = [
+    Task(
+    createdTime: DateTime.now(),
+      title: 'Walk the dog',
+    ),
+    Task(
+      createdTime: DateTime.now(),
+      title: 'Walk'
+  ),
+
+  ];
 
   List<Task> get tasks =>
       _tasks.where((task) => task.isComplete == false).toList();

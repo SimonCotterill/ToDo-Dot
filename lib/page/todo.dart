@@ -76,34 +76,55 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-          content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Add Task',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-              )),
-          // TODO: Add close button if user doesn't want to add task
-          SizedBox(height: 10),
-          TaskForm(
-            onChangedTitle: (title) => setState(() => this.title = title),
-            onChangedDescription: (description) =>
-                setState(() => this.description = description),
-            onSavedTask: () {
-              // save task to database
-              // return to To-Do List
-            },
-          ),
-        ],
-      ));
+          content: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                  Text('Add Task',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                      )),
+                  // TODO: Add close button if user doesn't want to add task
+                  SizedBox(height: 10),
+                  TaskForm(
+                    onChangedTitle: (title) => setState(() => this.title = title),
+                    onChangedDescription: (description) =>
+                        setState(() => this.description = description),
+                    onSavedTask: addTask,
+                  ),
+              ],
+            ),
+                )
+    );
+    void addTask() {
+      final isValid = _formKey.currentState.validate();
+
+      if (!isValid) {
+        return;
+      } else{
+        final todo = Task(
+          id: DateTime.now().toString(),
+          title: title,
+          description: description,
+          createdTime: DateTime.now(),
+        );
+
+        final provider = Provider.of<TaskProvider>(context, listen: false);
+        provider.addTask(todo);
+
+        Navigator.of(context).pop();
+
+      }
+    }
 }
 
 class TaskForm extends StatelessWidget {
@@ -248,6 +269,7 @@ class TaskWidget extends StatelessWidget {
       );
 
   Widget buildTask(BuildContext context) => Container(
+        color: Colors.white,
         padding: EdgeInsets.all(20),
         child: Row(
           children: [
@@ -287,5 +309,7 @@ class TaskWidget extends StatelessWidget {
         ),
       );
 }
+
+
 
 // onTap: ()=> this.setState(() { this.selected= !this.selected ;}),
