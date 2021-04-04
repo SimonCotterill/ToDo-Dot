@@ -3,6 +3,7 @@ import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
 import 'sidebar.dart';
 import 'todo.dart';
+import 'connect.dart';
 import 'pomodoro.dart';
 
 class Dashboard extends StatelessWidget {
@@ -45,14 +46,12 @@ class Dashboard extends StatelessWidget {
                       text: "Calendar",
                       routestful: Calendar(),
                       isStLess: false,
-                      //TODO: Create page for this and remove default
                     ),
                     HomeButton(
                       icon: Icons.add_rounded,
                       text: "Connect",
-                      routestless: Dashboard(),
-                      isStLess: true,
-                      //TODO: Create page for this and remove default
+                      routestful: Connect(),
+                      isStLess: false,
                     ),
                   ],
                 ),

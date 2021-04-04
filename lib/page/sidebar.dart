@@ -5,6 +5,7 @@ import 'package:todo_dot/style.dart';
 import 'settings.dart';
 import 'calendar.dart';
 import 'todo.dart';
+import 'connect.dart';
 
 // https://www.youtube.com/watch?v=iX07Xnn4ol8&ab_channel=PradipDebnath
 // https://doctorcodetutorial.blogspot.com/2020/09/make-flutter-navigation-drawer-in.html
@@ -48,9 +49,8 @@ class SideBar extends StatelessWidget {
           SideButton(
             icon: Icons.add_rounded,
             text: "Connect",
-            routestless: Settings(),
-            isStLess: true,
-            //TODO: Create page for this and remove default
+            routestful: Connect(),
+            isStLess: false,
           ),
           SideButton(
             icon: Icons.settings,
