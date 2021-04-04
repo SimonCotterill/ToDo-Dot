@@ -238,6 +238,16 @@ class TaskWidget extends StatelessWidget {
                       ),
                     ),
                   ),
+                if (task.alertTime != null)
+                  Container(
+                    margin: EdgeInsets.only(top: 4),
+                    child: Text(
+                      task.alertTime.toLocal().toString(),
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
               ],
             ))
           ],
