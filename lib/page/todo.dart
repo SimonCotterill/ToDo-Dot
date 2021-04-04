@@ -3,7 +3,9 @@ import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
-
+import 'package:todo_dot/widget/todo_list.dart';
+import 'package:todo_dot/widget/taskform.dart';
+import 'package:todo_dot/database/database.dart';
 import 'sidebar.dart';
 import 'package:todo_dot/style.dart';
 
@@ -27,7 +29,7 @@ class ToDoState extends State<ToDo> {
   Widget build(BuildContext context) {
     final tabs = [
       ToDoList(),
-      Container(),
+      CompletedListWidget(),
     ];
 
     return Scaffold(
@@ -56,7 +58,26 @@ class ToDoState extends State<ToDo> {
           ),
         ],
       ),
-      body: tabs[selectedIndex],
+      body: StreamBuilder<List<Task>>(
+        stream: Database.readTasks(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(child: CircularProgressIndicator());
+            default:
+              if (snapshot.hasError) {
+                return buildText('Something Went Wrong Try later');
+              } else {
+                final todos = snapshot.data;
+
+                final provider = Provider.of<TaskProvider>(context);
+                provider.setTask(todos);
+
+                return tabs[selectedIndex];
+              }
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: todoDarkGreen,
         child: Icon(Icons.add),
@@ -83,155 +104,51 @@ class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) => AlertDialog(
           content: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                  Text('Add Task',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                      )),
-                  // TODO: Add close button if user doesn't want to add task
-                  SizedBox(height: 10),
-                  TaskForm(
-                    onChangedTitle: (title) => setState(() => this.title = title),
-                    onChangedDescription: (description) =>
-                        setState(() => this.description = description),
-                    onSavedTask: addTask,
-                  ),
-              ],
-            ),
-                )
-    );
-    void addTask() {
-      final isValid = _formKey.currentState.validate();
-
-      if (!isValid) {
-        return;
-      } else{
-        final todo = Task(
-          id: DateTime.now().toString(),
-          title: title,
-          description: description,
-          createdTime: DateTime.now(),
-        );
-
-        final provider = Provider.of<TaskProvider>(context, listen: false);
-        provider.addTask(todo);
-
-        Navigator.of(context).pop();
-
-      }
-    }
-}
-
-class TaskForm extends StatelessWidget {
-  final String title;
-  final String description;
-  // final DateTime alarmTime;
-  final ValueChanged<String> onChangedTitle;
-  final ValueChanged<String> onChangedDescription;
-  final VoidCallback onSavedTask;
-
-  const TaskForm({
-    Key key,
-    this.title = '',
-    this.description = '',
-    @required this.onChangedTitle,
-    @required this.onChangedDescription,
-    @required this.onSavedTask,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => SingleChildScrollView(
+        key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTitle(),
-            SizedBox(height: 8),
-            buildDescription(),
-            SizedBox(height: 25),
-            buildButton(),
+            Text('Add Task',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 23,
+                )),
+            SizedBox(height: 10),
+            TaskForm(
+              onChangedTitle: (title) => setState(() => this.title = title),
+              onChangedDescription: (description) =>
+                  setState(() => this.description = description),
+              onSavedTask: addTask,
+              onDeleteTask: cancelTask,
+            ),
           ],
         ),
+      ));
+  void addTask() {
+    final isValid = _formKey.currentState.validate();
+
+    if (!isValid) {
+      return;
+    } else {
+      final todo = Task(
+        id: DateTime.now().toString(),
+        title: title,
+        description: description,
+        createdTime: DateTime.now(),
       );
 
-  Widget buildTitle() => TextFormField(
-        maxLines: 1,
-        initialValue: title,
-        onChanged: onChangedTitle,
-        validator: (title) {
-          if (title.isEmpty) {
-            return 'The title cannot be empty';
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: 'Title',
-        ),
-      );
+      final provider = Provider.of<TaskProvider>(context, listen: false);
+      provider.addTask(todo);
 
-  Widget buildDescription() => TextFormField(
-        maxLines: 3,
-        initialValue: description,
-        onChanged: onChangedDescription,
-        decoration: InputDecoration(
-          border: UnderlineInputBorder(),
-          labelText: 'Description',
-        ),
-      );
-
-  Widget buildButton() => Container(
-        height: 40.0,
-        width: 120,
-        decoration: BoxDecoration(
-          color: todoDarkGreen,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: FlatButton(
-          onPressed: onSavedTask,
-          child: Center(
-            child: Text(
-              'Save',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16),
-            ),
-          ),
-        ),
-      );
+      Navigator.of(context).pop();
+    }
+  }
 }
 
-//Other To do stuff
-
-class ToDoList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final provider = Provider.of<TaskProvider>(context);
-    final tasks = provider.tasks;
-
-    return tasks.isEmpty
-        ? Center(
-            child: Text(
-              'No Tasks',
-              style: TextStyle(fontSize: 20),
-            ),
-          )
-        : ListView.separated(
-            physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.all(16),
-            separatorBuilder: (context, index) => Container(height: 8),
-            itemCount: tasks.length,
-            itemBuilder: (context, index) {
-              final task = tasks[index];
-              return TaskWidget(task: task);
-            },
-          );
-  }
+void cancelTask() {
+  // task never created, return to list page
+  return;
 }
 
 class TaskWidget extends StatelessWidget {
@@ -310,6 +227,11 @@ class TaskWidget extends StatelessWidget {
       );
 }
 
-
-
 // onTap: ()=> this.setState(() { this.selected= !this.selected ;}),
+//
+Widget buildText(String text) => Center(
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 24, color: Colors.white),
+      ),
+    );
