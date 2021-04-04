@@ -6,7 +6,9 @@ import 'package:todo_dot/model/task.dart';
 import 'package:todo_dot/widget/todo_list.dart';
 import 'package:todo_dot/widget/taskform.dart';
 import 'package:todo_dot/database/database.dart';
+import 'package:todo_dot/database/utils.dart';
 import 'sidebar.dart';
+import 'editTask.dart';
 import 'package:todo_dot/style.dart';
 
 //https://pub.dev/packages/circular_check_box
@@ -168,7 +170,7 @@ class TaskWidget extends StatelessWidget {
           actions: [
             IconSlideAction(
               color: Colors.green,
-              onTap: () {},
+              onTap: () => editTask(context, task),
               caption: 'Edit',
               icon: Icons.edit,
             )
@@ -177,7 +179,7 @@ class TaskWidget extends StatelessWidget {
             IconSlideAction(
               color: Colors.red,
               caption: 'Delete',
-              onTap: () {},
+              onTap: () => deleteTask(context, task),
               icon: Icons.delete,
             ),
           ],
@@ -223,6 +225,18 @@ class TaskWidget extends StatelessWidget {
               ],
             ))
           ],
+        ),
+      );
+  void deleteTask(BuildContext context, Task task) {
+    final provider = Provider.of<TaskProvider>(context, listen: false);
+    provider.removeTask(task);
+
+    Utils.showSnackBar(context, 'Deleted the task');
+  }
+
+  void editTask(BuildContext context, Task task) => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => EditTaskPage(task: task),
         ),
       );
 }
