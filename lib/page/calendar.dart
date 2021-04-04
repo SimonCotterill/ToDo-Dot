@@ -6,7 +6,6 @@ import 'package:todo_dot/helper/dates_list.dart';
 import 'package:todo_dot/model/task.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:todo_dot/widget/taskwidget.dart';
 
 import 'todo.dart';
 
