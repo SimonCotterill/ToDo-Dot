@@ -21,6 +21,7 @@ class Settings extends StatelessWidget {
             icon: Icons.access_time,
             text: 'Timezone',
             routestless: SetTimezone(),
+            isStLess: true,
           ),
           SizedBox(
             height: 20,
@@ -29,6 +30,7 @@ class Settings extends StatelessWidget {
             icon: Icons.add_alarm,
             text: 'Manage Devices',
             routestless: ManageDevices(),
+            isStLess: true,
           ),
         ],
       ),
