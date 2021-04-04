@@ -117,17 +117,19 @@ class _AddTaskState extends State<AddTask> {
                   fontWeight: FontWeight.bold,
                   fontSize: 23,
                 )),
-            SizedBox(height: 10),
-            DatePickerWidget(),
-            SizedBox(height: 10),
-            TimePickerWidget(),
             TaskForm(
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
+            ),
+            SizedBox(height: 10),
+            DatetimePickerWidget(),
+            SizedBox(height: 30),
+            TaskFormButtons(
               onSavedTask: addTask,
               onDeleteTask: cancelTask,
             ),
+
           ],
         ),
       ));

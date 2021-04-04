@@ -33,8 +33,6 @@ class _AddTaskDialogWidgetState extends State<AddTaskDialogWidget> {
                 onChangedTitle: (title) => setState(() => this.title = title),
                 onChangedDescription: (description) =>
                     setState(() => this.description = description),
-                onSavedTask: addTask,
-                onDeleteTask: cancelTask,
               ),
             ],
           ),

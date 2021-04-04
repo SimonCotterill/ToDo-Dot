@@ -7,8 +7,6 @@ class TaskForm extends StatelessWidget {
   final DateTime alarmTime;
   final ValueChanged<String> onChangedTitle;
   final ValueChanged<String> onChangedDescription;
-  final VoidCallback onSavedTask;
-  final VoidCallback onDeleteTask;
 
   const TaskForm({
     Key key,
@@ -17,8 +15,6 @@ class TaskForm extends StatelessWidget {
     this.alarmTime,
     @required this.onChangedTitle,
     @required this.onChangedDescription,
-    @required this.onSavedTask,
-    @required this.onDeleteTask,
   }) : super(key: key);
 
   @override
@@ -30,9 +26,6 @@ class TaskForm extends StatelessWidget {
             SizedBox(height: 8),
             buildDescription(),
             SizedBox(height: 25),
-            buildSaveButton(),
-            SizedBox(height: 25),
-            buildCancelButton(),
           ],
         ),
       );
@@ -63,45 +56,71 @@ class TaskForm extends StatelessWidget {
         ),
       );
 
+}
+
+
+class TaskFormButtons extends StatelessWidget {
+  final VoidCallback onSavedTask;
+  final VoidCallback onDeleteTask;
+
+  const TaskFormButtons({
+    Key key,
+    @required this.onSavedTask,
+    @required this.onDeleteTask,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => SingleChildScrollView(
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        buildSaveButton(),
+        SizedBox(width: 25),
+        buildCancelButton(),
+      ],
+    ),
+  );
+
   Widget buildSaveButton() => Container(
-        height: 40.0,
-        width: 120,
-        decoration: BoxDecoration(
-          color: todoDarkGreen,
-          borderRadius: BorderRadius.circular(30),
+    height: 40.0,
+    width: 120,
+    decoration: BoxDecoration(
+      color: todoDarkGreen,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: FlatButton(
+      onPressed: onSavedTask,
+      child: Center(
+        child: Text(
+          'Save',
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16),
         ),
-        child: FlatButton(
-          onPressed: onSavedTask,
-          child: Center(
-            child: Text(
-              'Save',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16),
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
   Widget buildCancelButton() => Container(
-        height: 40.0,
-        width: 120,
-        decoration: BoxDecoration(
-          color: todoDarkGreen,
-          borderRadius: BorderRadius.circular(30),
+    height: 40.0,
+    width: 120,
+    decoration: BoxDecoration(
+      color: todoDarkGreen,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: FlatButton(
+      onPressed: onDeleteTask,
+      child: Center(
+        child: Text(
+          'Cancel',
+          style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 16),
         ),
-        child: FlatButton(
-          onPressed: onDeleteTask,
-          child: Center(
-            child: Text(
-              'Cancel',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16),
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 }

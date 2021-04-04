@@ -188,3 +188,99 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
     setState(() => time = newTime);
   }
 }
+
+class DatetimePickerWidget extends StatefulWidget {
+  @override
+  _DatetimePickerWidgetState createState() => _DatetimePickerWidgetState();
+}
+
+class _DatetimePickerWidgetState extends State<DatetimePickerWidget> {
+  DateTime dateTime;
+
+  String getText() {
+    if (dateTime == null) {
+      return 'Select Date and Time';
+    } else {
+      return DateFormat('MM/dd/yyyy HH:mm').format(dateTime);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => ButtonHeaderWidget(
+    title: 'Date and Time',
+    text: getText(),
+    onClicked: () => pickDateTime(context),
+  );
+
+  Future pickDateTime(BuildContext context) async {
+    final date = await pickDate(context);
+    if (date == null) return;
+
+    final time = await pickTime(context);
+    if (time == null) return;
+
+    setState(() {
+      dateTime = DateTime(
+        date.year,
+        date.month,
+        date.day,
+        time.hour,
+        time.minute,
+      );
+    });
+  }
+
+  Future<DateTime> pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: dateTime ?? initialDate,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: todoDarkGreen,
+            accentColor: todoMediumGreen,
+            colorScheme: ColorScheme.light(primary: todoDarkGreen),
+            buttonTheme: ButtonThemeData(
+                textTheme: ButtonTextTheme.primary
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+
+    if (newDate == null) return null;
+
+    return newDate;
+  }
+
+  Future<TimeOfDay> pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay(hour: 9, minute: 0);
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: dateTime != null
+          ? TimeOfDay(hour: dateTime.hour, minute: dateTime.minute)
+          : initialTime,
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: todoDarkGreen,
+            accentColor: todoMediumGreen,
+            colorScheme: ColorScheme.light(primary: todoDarkGreen),
+            buttonTheme: ButtonThemeData(
+                textTheme: ButtonTextTheme.primary
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+
+    if (newTime == null) return null;
+
+    return newTime;
+  }
+}
