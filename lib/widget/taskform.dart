@@ -76,7 +76,7 @@ class TaskFormButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         buildSaveButton(),
-        SizedBox(width: 25),
+        SizedBox(width: 20),
         buildCancelButton(),
       ],
     ),
