@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
-import 'package:todo_dot/page/datepicker.dart';
-import 'package:todo_dot/page/todo.dart';
 import 'package:todo_dot/widget/taskform.dart';
 
 import 'sidebar.dart';
@@ -30,6 +28,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
 
     title = widget.task.title;
     description = widget.task.description;
+    alertTime = widget.task.alertTime;
   }
 
   @override
@@ -55,12 +54,34 @@ class _EditTaskPageState extends State<EditTaskPage> {
                   onChangedTitle: (title) => setState(() => this.title = title),
                   onChangedDescription: (description) =>
                       setState(() => this.description = description),
+                  onChangedAlert: (alertTime) =>
+                      setState(() => this.alertTime = alertTime),
+                  onSavedTask: saveTask,
+                  onCancel: cancelTask,
                 ),
-                DatetimePickerWidget(),
-                SizedBox(height: 20,),
-                TaskFormButtons(
-                    onSavedTask: saveTask,
-                    onDeleteTask: cancelTask),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 40.0,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: todoDarkGreen,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: FlatButton(
+                    onPressed: deleteTask,
+                    child: Center(
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -79,6 +100,12 @@ class _EditTaskPageState extends State<EditTaskPage> {
 
       Navigator.of(context).pop();
     }
+  }
+
+  void cancelTask() {
+    // task never created, return to list page
+    Navigator.of(context).pop();
+    return;
   }
 
   void deleteTask() {

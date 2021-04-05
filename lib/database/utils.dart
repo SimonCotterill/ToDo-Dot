@@ -14,7 +14,7 @@ class Utils {
   static DateTime toDateTime(Timestamp value) {
     if (value == null) return null;
 
-    return value.toDate();
+    return value.toDate().toLocal();
   }
 
   static dynamic fromDateTimeToJson(DateTime date) {

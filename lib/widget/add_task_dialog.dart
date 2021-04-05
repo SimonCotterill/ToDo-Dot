@@ -12,6 +12,7 @@ class _AddTaskDialogWidgetState extends State<AddTaskDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
+  DateTime alertTime;
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -33,6 +34,10 @@ class _AddTaskDialogWidgetState extends State<AddTaskDialogWidget> {
                 onChangedTitle: (title) => setState(() => this.title = title),
                 onChangedDescription: (description) =>
                     setState(() => this.description = description),
+                onChangedAlert: (alertTime) =>
+                    setState(() => this.alertTime = alertTime),
+                onSavedTask: addTask,
+                onCancel: cancelTask,
               ),
             ],
           ),
@@ -49,7 +54,7 @@ class _AddTaskDialogWidgetState extends State<AddTaskDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        alertTime: DateTime.now().add(new Duration(days: 1)),
+        alertTime: alertTime,
         createdTime: DateTime.now(),
       );
 
@@ -63,5 +68,6 @@ class _AddTaskDialogWidgetState extends State<AddTaskDialogWidget> {
   void cancelTask() {
     // task never created, return to list page
     Navigator.of(context).pop();
+    return;
   }
 }
