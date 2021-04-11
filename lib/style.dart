@@ -10,6 +10,9 @@ const Color todoDarkGreen = Color(0xFF214e4c);
 const Color todoMediumGreen = Color(0xFF589590);
 const Color todoLightGreen = Color(0xFFdce9e8);
 
+const MaterialColor todoDarkGreenMaterial =
+    MaterialColor(4280372812, {4280372812: todoDarkGreen});
+
 // Main App Bar for App
 // value is only set once
 // ignore: must_be_immutable

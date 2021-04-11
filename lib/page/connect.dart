@@ -53,6 +53,17 @@ class _Connect extends State<Connect> {
     super.dispose();
   }
 
+  // raised button was deprecated
+  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    onPrimary: Colors.black87,
+    primary: Colors.grey[300],
+    minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2)),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +104,8 @@ class _Connect extends State<Connect> {
               title: const Text('Bluetooth status'),
               subtitle: Text(
                   BluetoothStateHelper.bluetoothStateToString(_bluetoothState)),
-              trailing: RaisedButton(
+              trailing: ElevatedButton(
+                style: raisedButtonStyle,
                 child: const Text('Settings'),
                 onPressed: () {
                   FlutterBluetoothSerial.instance.openSettings();
@@ -160,7 +172,8 @@ class _Connect extends State<Connect> {
               style: TextStyle(fontWeight: FontWeight.bold),
             )),
             ListTile(
-              title: RaisedButton(
+              title: ElevatedButton(
+                  style: raisedButtonStyle,
                   child: const Text('Select connected device'),
                   onPressed: () async {
                     final BluetoothDevice selectedDevice =
@@ -181,7 +194,8 @@ class _Connect extends State<Connect> {
                   }),
             ),
             ListTile(
-              title: RaisedButton(
+              title: ElevatedButton(
+                  style: raisedButtonStyle,
                   child: const Text('Explore discovered devices'),
                   onPressed: () async {
                     final BluetoothDevice selectedDevice =

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:circular_check_box/circular_check_box.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_dot/model/task.dart';
@@ -90,7 +91,8 @@ class TaskWidget extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: 4),
                     child: Text(
-                      task.alertTime.toLocal().toString(),
+                      DateFormat('yyyy-MM-dd HH:mm')
+                          .format(task.alertTime.toLocal()),
                       style: TextStyle(
                         fontSize: 20,
                       ),

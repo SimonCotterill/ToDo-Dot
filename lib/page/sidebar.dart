@@ -32,7 +32,6 @@ class SideBar extends StatelessWidget {
             text: "To-Do List",
             routestful: ToDo(),
             isStLess: false,
-            //TODO: Create page for this and remove default
           ),
           SideButton(
             icon: Icons.timer_rounded,

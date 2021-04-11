@@ -11,7 +11,10 @@ import 'package:todo_dot/style.dart';
 //https://www.youtube.com/watch?v=kN9Yfd4fu04&ab_channel=JohannesMilke
 
 class ToDo extends StatefulWidget {
-  ToDo({Key key, this.title}) : super(key: key);
+  ToDo({
+    Key key,
+    this.title = '',
+  }) : super(key: key);
 
   final String title;
 
@@ -66,10 +69,10 @@ class ToDoState extends State<ToDo> {
               if (snapshot.hasError) {
                 return buildText('Something Went Wrong Try later');
               } else {
-                final todos = snapshot.data;
+                final tasks = snapshot.data;
 
                 final provider = Provider.of<TaskProvider>(context);
-                provider.setTask(todos);
+                provider.setTask(tasks);
 
                 return tabs[selectedIndex];
               }
@@ -81,7 +84,7 @@ class ToDoState extends State<ToDo> {
         child: Icon(Icons.add),
         onPressed: () => showDialog(
           context: context,
-          child: AddTask(),
+          builder: (BuildContext context) => new AddTask(),
           barrierDismissible: false,
         ),
       ),

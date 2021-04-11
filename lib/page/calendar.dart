@@ -87,9 +87,10 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
 //Page layout
   @override
   Widget build(BuildContext context) {
+    // add active tasks with alarms to events in calendar
     final provider = Provider.of<TaskProvider>(context);
     final tasks = provider.tasks;
-    List<DateTime> days = List.empty();
+    List<DateTime> days = List.empty(growable: true);
 
     if (tasks != null && tasks.isNotEmpty) {
       for (var i = 0; i < tasks.length; i++) {
@@ -101,12 +102,22 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     if (days.isNotEmpty) {
       for (var i = 0; i < days.length; i++) {
         _events[days[i]] = tasks
-            .where((task) => task.alertTime.year == days[i].year)
-            .where((task) => task.alertTime.month == days[i].month)
-            .where((task) => task.alertTime.day == days[i].day)
+            .where((task) => task.alertTime?.year == days[i].year)
+            .where((task) => task.alertTime?.month == days[i].month)
+            .where((task) => task.alertTime?.day == days[i].day)
             .toList();
       }
     }
+
+    // flat button was deprecated
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      primary: Colors.black87,
+      minimumSize: Size(88, 36),
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+      ),
+    );
 
     return Scaffold(
         appBar: PreferredSize(
@@ -142,10 +153,11 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                           color: todoDarkGreen,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: FlatButton(
+                        child: TextButton(
+                          style: flatButtonStyle,
                           onPressed: () => showDialog(
                             context: context,
-                            child: AddTask(),
+                            builder: (BuildContext context) => new AddTask(),
                             barrierDismissible: false,
                           ),
                           child: Center(
@@ -165,6 +177,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Text(
                       '$formattedMonth $formattedDay, $formattedYear',
@@ -218,6 +231,16 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   Widget _buildButtons() {
     final dateTime = DateTime.now();
 
+    // flat button was deprecated
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      primary: Colors.black87,
+      minimumSize: Size(88, 36),
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+      ),
+    );
+
     return Column(
       children: <Widget>[
         Row(
@@ -231,7 +254,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                 color: todoDarkGreen,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: FlatButton(
+              child: TextButton(
+                style: flatButtonStyle,
                 child: Text(
                   'Today',
                   style: TextStyle(

@@ -57,6 +57,16 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
     );
   }
 
+  // flat button is deprecated
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    primary: Colors.black87,
+    minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -144,7 +154,8 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           color: todoMediumGreen,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: FlatButton(
+                        child: TextButton(
+                          style: flatButtonStyle,
                           onPressed: () {
                             _timer = 25;
                             _setTimer(25);
@@ -170,7 +181,8 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
                           color: todoMediumGreen,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: FlatButton(
+                        child: TextButton(
+                          style: flatButtonStyle,
                           onPressed: () {
                             _timer = 5;
                             _setTimer(5);
