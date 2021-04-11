@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_dot/style.dart';
-import 'sidebar.dart';
+import 'package:table_calendar/table_calendar.dart';
+
 import 'package:todo_dot/helper/dates_list.dart';
 import 'package:todo_dot/model/task.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:todo_dot/style.dart';
 
+import 'sidebar.dart';
 import 'todo.dart';
 
 // https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/lib/screens/calendar_page.dart

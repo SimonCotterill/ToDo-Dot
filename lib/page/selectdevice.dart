@@ -1,8 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'package:todo_dot/style.dart';
+
 import 'sidebar.dart';
 
 class SelectBondedDevicePage extends StatefulWidget {

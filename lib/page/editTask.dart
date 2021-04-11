@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:todo_dot/model/task.dart';
+import 'package:todo_dot/style.dart';
 import 'package:todo_dot/widget/taskform.dart';
 
 import 'sidebar.dart';
-import 'package:todo_dot/style.dart';
 
 class EditTaskPage extends StatefulWidget {
   final Task task;

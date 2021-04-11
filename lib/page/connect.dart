@@ -1,13 +1,14 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
-import 'package:todo_dot/style.dart';
 import 'package:todo_dot/helper/bluetoothstateText.dart';
-import 'sidebar.dart';
+import 'package:todo_dot/style.dart';
+
 import 'discovery.dart';
 import 'selectdevice.dart';
-
+import 'sidebar.dart';
 // https://www.youtube.com/watch?v=WUw-_X66dLE
 
 class Connect extends StatefulWidget {

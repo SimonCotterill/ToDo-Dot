@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:circular_check_box/circular_check_box.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_dot/model/task.dart';
+
 import 'package:todo_dot/database/utils.dart';
-import 'package:todo_dot/style.dart';
+import 'package:todo_dot/model/task.dart';
 import 'package:todo_dot/page/editTask.dart';
+import 'package:todo_dot/style.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;

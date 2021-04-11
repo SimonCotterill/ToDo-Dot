@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_dot/model/task.dart';
-import 'package:todo_dot/widget/todo_list.dart';
-import 'package:todo_dot/widget/taskform.dart';
+
 import 'package:todo_dot/database/database.dart';
-import 'sidebar.dart';
+import 'package:todo_dot/model/task.dart';
 import 'package:todo_dot/style.dart';
+import 'package:todo_dot/widget/taskform.dart';
+import 'package:todo_dot/widget/todo_list.dart';
+
+import 'sidebar.dart';
 
 //https://pub.dev/packages/circular_check_box
 //https://www.youtube.com/watch?v=kN9Yfd4fu04&ab_channel=JohannesMilke
