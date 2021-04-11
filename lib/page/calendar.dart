@@ -156,6 +156,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
                         ),
                         child: TextButton(
                           style: flatButtonStyle,
+                          // TODO refresh state when task is added
+                          // to display task without navigating away from page
                           onPressed: () => showDialog(
                             context: context,
                             builder: (BuildContext context) => new AddTask(),
