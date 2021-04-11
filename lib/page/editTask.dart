@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:todo_dot/model/task.dart';
+import 'package:todo_dot/style.dart';
 import 'package:todo_dot/widget/taskform.dart';
 
 import 'sidebar.dart';
-import 'package:todo_dot/style.dart';
 
 class EditTaskPage extends StatefulWidget {
   final Task task;
@@ -31,6 +32,16 @@ class _EditTaskPageState extends State<EditTaskPage> {
     alertTime = widget.task.alertTime;
   }
 
+  // flat button is deprecated
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    primary: Colors.black87,
+    minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: PreferredSize(
@@ -51,6 +62,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                 TaskForm(
                   title: title,
                   description: description,
+                  alertTime: alertTime,
                   onChangedTitle: (title) => setState(() => this.title = title),
                   onChangedDescription: (description) =>
                       setState(() => this.description = description),
@@ -69,7 +81,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
                     color: todoDarkGreen,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: FlatButton(
+                  child: TextButton(
+                    style: flatButtonStyle,
                     onPressed: deleteTask,
                     child: Center(
                       child: Text(

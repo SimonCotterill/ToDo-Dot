@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_dot/style.dart';
+
 import 'connect.dart';
 import 'sidebar.dart';
 
@@ -67,7 +68,8 @@ class Timezone extends StatelessWidget {
             preferredSize: Size.fromHeight(80.0),
             child: ToDoAppBar(
               headerImage: 'assets/To_Do_Light.png',
-              isSubPage: true,
+              // TODO fix close button so that it returns to settings
+              isSubPage: false,
             )),
         drawer: Drawer(
           child: SideBar(),

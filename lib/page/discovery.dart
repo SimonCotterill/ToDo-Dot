@@ -1,8 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'package:todo_dot/style.dart';
+
 import 'sidebar.dart';
 
 class DiscoveryPage extends StatefulWidget {
@@ -17,7 +19,7 @@ class DiscoveryPage extends StatefulWidget {
 
 class _DiscoveryPage extends State<DiscoveryPage> {
   StreamSubscription<BluetoothDiscoveryResult> _streamSubscription;
-  List<BluetoothDiscoveryResult> results = List<BluetoothDiscoveryResult>();
+  List<BluetoothDiscoveryResult> results = [];
   bool isDiscovering;
 
   _DiscoveryPage();
@@ -65,6 +67,16 @@ class _DiscoveryPage extends State<DiscoveryPage> {
 
     super.dispose();
   }
+
+  // flat button is deprecated
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    primary: Colors.black87,
+    minimumSize: Size(88, 36),
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +185,8 @@ class _DiscoveryPage extends State<DiscoveryPage> {
                       title: const Text('Error occured while bonding'),
                       content: Text("${ex.toString()}"),
                       actions: <Widget>[
-                        new FlatButton(
+                        new TextButton(
+                          style: flatButtonStyle,
                           child: new Text("Close"),
                           onPressed: () {
                             Navigator.of(context).pop();

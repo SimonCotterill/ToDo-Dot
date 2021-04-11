@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:todo_dot/page/calendar.dart';
 import 'package:todo_dot/style.dart';
-import 'sidebar.dart';
-import 'todo.dart';
+
 import 'connect.dart';
 import 'pomodoro.dart';
+import 'sidebar.dart';
+import 'todo.dart';
 
 class Dashboard extends StatelessWidget {
   @override
