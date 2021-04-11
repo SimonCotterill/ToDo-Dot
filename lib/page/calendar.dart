@@ -99,7 +99,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
           days.add(tasks[i].alertTime);
       }
     }
-
+    // TODO update to get title, description, and alert time of each task
     if (days.isNotEmpty) {
       for (var i = 0; i < days.length; i++) {
         _events[days[i]] = tasks
