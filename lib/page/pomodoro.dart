@@ -61,7 +61,6 @@ class PomodoroState extends State<Pomodoro> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
-      backgroundColor: todoLightGrey,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
           child: ToDoAppBar(headerImage: 'assets/To_Do_Light.png')),
