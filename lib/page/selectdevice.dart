@@ -1,8 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'package:todo_dot/style.dart';
+
 import 'sidebar.dart';
 
 class SelectBondedDevicePage extends StatefulWidget {
@@ -17,6 +19,7 @@ class SelectBondedDevicePage extends StatefulWidget {
 }
 
 enum _DeviceAvailability {
+  // ignore: unused_field
   no,
   maybe,
   yes,
@@ -31,7 +34,7 @@ class _DeviceWithAvailability extends BluetoothDevice {
 }
 
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
-  List<_DeviceWithAvailability> devices = List<_DeviceWithAvailability>();
+  List<_DeviceWithAvailability> devices = [];
 
   // Availability
   StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
